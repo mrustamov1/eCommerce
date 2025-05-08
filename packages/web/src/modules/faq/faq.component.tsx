@@ -42,21 +42,29 @@ export function FAQ() {
           ))}
         </div>
         <div className="flex justify-center">
-          <button className="px-[30px] py-[8px] font-medium text-[#161616] border-2 border-[#161616] rounded-3xl">
-            VIEW ALL FAQS
+          <button className="relative overflow-hidden group px-[30px] py-[8px] font-medium text-[#161616] border-2 border-[#161616] rounded-3xl hover:border-2 cursor-pointer">
+            <span className="relative z-10 transition-colors duration-300 group-hover:text-white ">
+              VIEW ALL FAQS
+            </span>
+            <span className="absolute bottom-0 left-0 w-full h-0 bg-[#EB4443] transition-all duration-300 ease-in-out group-hover:h-full"></span>
           </button>
         </div>
       </div>
 
       <div className="pt-16 relative">
         <img src={Images.studio} alt="" />
-        <div className="absolute top-[50%] pl-[30px]">
+        <div className="absolute top-[50%] pl-[60px]">
           <div className="leading-[4.375rem] mb-[30px]">
             <h1 className="text-[5rem] font-semibold">Beats Studio Pro</h1>
             <span className="text-[2rem]">Featuring Shohei Ohtani</span>
           </div>
           <div>
-            <button className="px-[25px] py-[8px] tracking-tight font-semibold text-[#fff] rounded-3xl bg-[#161616]">SHOP</button>
+            <button className="relative overflow-hidden group px-[25px] py-[8px] tracking-tight font-semibold text-[#fff] rounded-3xl bg-[#161616] border-2 border-transparent hover:border-2 hover:border-[#000] cursor-pointer">
+              <span className="relative z-10 transition-colors duration-300 group-hover:text-white ">
+                SHOP
+              </span>
+              <span className="absolute bottom-0 left-0 w-full h-0 bg-[#EB4443] transition-all duration-300 ease-in-out group-hover:h-full"></span>
+            </button>
           </div>
         </div>
       </div>

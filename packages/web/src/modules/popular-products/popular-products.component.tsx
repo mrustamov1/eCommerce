@@ -36,7 +36,7 @@ export function PopularProducts() {
           {products.map((product) => (
             <article
               key={product.id}
-              className="cursor-pointer bg-[#fff] p-[1.875rem] rounded-2xl flex flex-col leading-8 flex-1 shadow-[2px_4px_12px_rgba(0,0,0,0.1)] transition-transform duration-300 hover:scale-[1.02] hover:rotate-x-1 hover:rotate-y-1"
+              className="cursor-pointer bg-[#fff] p-[1.875rem] rounded-2xl flex flex-col leading-8 flex-1 shadow-[2px_4px_12px_rgba(0,0,0,0.1)] transition-transform duration-300 hover:scale-[1.02]"
             >
               <span className="text-[#e31837] font-bold">
                 {product.version}
@@ -77,11 +77,17 @@ export function PopularProducts() {
             <span className="text-[32px]">Fresh juice for your devices</span>
           </div>
           <div className="flex gap-5">
-            <button className="px-[25px] py-[8px] tracking-tight font-semibold text-[#161616] rounded-3xl bg-[#fff]">
-              SHOP
+            <button className="relative overflow-hidden group px-[25px] py-[8px] tracking-tight font-semibold text-[#161616] rounded-3xl bg-[#fff] border-2 border-transparent hover:border-2 hover:border-[#fff] cursor-pointer">
+              <span className="relative z-10 transition-colors duration-300 group-hover:text-white ">
+                SHOP
+              </span>
+              <span className="absolute bottom-0 left-0 w-full h-0 bg-[#EB4443] transition-all duration-300 ease-in-out group-hover:h-full"></span>
             </button>
-            <button className="px-[25px] py-[8px] tracking-tight font-semibold text-[#fff] rounded-3xl border-2 border-[#fff]">
-              WATCH THE FILM
+            <button className=" relative overflow-hidden group px-[25px] py-[8px] tracking-tight font-semibold text-[#fff] rounded-3xl border-2 border-[#fff]">
+              <span className="relative z-10 transition-colors duration-300 group-hover:text-white ">
+                WATCH THE FILM
+              </span>
+              <span className="absolute bottom-0 left-0 w-full h-0 bg-[#EB4443] transition-all duration-300 ease-in-out group-hover:h-full"></span>
             </button>
           </div>
         </div>

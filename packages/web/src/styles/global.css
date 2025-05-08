@@ -24,6 +24,15 @@
   font-weight: 900;
 }
 
-body {
+body{
   background-color: #f0f0f0;
+}
+
+.scrollbar-hidden::-webkit-scrollbar {
+  display: none;
+}
+
+.scrollbar-hidden {
+  -ms-overflow-style: none; 
+  scrollbar-width: none; 
 }
