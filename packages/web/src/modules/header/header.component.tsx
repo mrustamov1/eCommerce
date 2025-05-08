@@ -1,4 +1,5 @@
 import { Images } from "../../assets/image";
+import { Button } from "../../ui-components/button/button.component";
 
 export function Header() {
   return (
@@ -13,8 +14,11 @@ export function Header() {
             <a href="Shop">Support</a>
           </li>
         </ul>
-        <button className="px-[37px] py-[5px] font-medium text-[#161616] border-2 border-[#161616] rounded-3xl">
-          Sign In
+        <button className="relative overflow-hidden group px-[37px] py-[5px] font-medium text-[#161616] border-2 border-[#161616] rounded-3xl cursor-pointer">
+          <span className="relative z-10 transition-colors duration-300 group-hover:text-white ">
+            Sign In
+          </span>
+          <span className="absolute bottom-0 left-0 w-full h-0 bg-[#F04847] transition-all duration-300 ease-in-out group-hover:h-full"></span>
         </button>
       </header>
       <main
@@ -31,9 +35,13 @@ export function Header() {
             <span className="text-[32px]">Built for athletes</span>
           </div>
           <div>
-            <button className="px-[25px] py-[8px] tracking-tight font-semibold text-[#161616] rounded-3xl bg-[#fff]">
-              SHOP
+            <button className="relative overflow-hidden group px-[25px] py-[8px] tracking-tight font-semibold text-[#161616] rounded-3xl bg-[#fff] border-2 border-transparent hover:border-2 hover:border-[#fff] cursor-pointer">
+              <span className="relative z-10 transition-colors duration-300 group-hover:text-white ">
+                SHOP
+              </span>
+              <span className="absolute bottom-0 left-0 w-full h-0 bg-[#EB4443] transition-all duration-300 ease-in-out group-hover:h-full"></span>
             </button>
+            <Button title="SHOP" mode="primary" />
           </div>
         </div>
       </main>
