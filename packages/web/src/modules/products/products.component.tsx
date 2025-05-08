@@ -67,7 +67,7 @@ export function Products() {
             key={product.id}
             className=" w-[333px] cursor-pointer bg-[#fff] p-[1.875rem] rounded-2xl flex flex-col leading-8 shadow-[2px_4px_12px_rgba(0,0,0,0.1)] transition-transform duration-300 hover:scale-[1.02] hover:rotate-x-1 hover:rotate-y-1"
           >
-            <span className="font-bold text-[32px]">{product.model}</span>
+            <span className="font-bold text-[30px]">{product.model}</span>
             <p>{product.description}</p>
             <img
               className="max-h-[295px] my-auto"
