@@ -29,7 +29,7 @@ export function PopularProducts() {
     },
   ];
   return (
-    <section className="flex flex-col justify-center items-center py-[4.5rem] bg-[#F0F0F0]">
+    <section className="flex flex-col justify-center items-center py-[4.5rem]">
       <h1 className="text-[2.5rem] font-bold">Popular Now</h1>
       <div className="w-full max-w-[1200px] mx-auto pt-16">
         <div className="flex gap-5 perspective-[1000px]">
@@ -70,7 +70,7 @@ export function PopularProducts() {
           playsInline
           className="w-full h-auto shadow-lg mt-20 relative"
         ></video>
-        <div className="flex-col flex  ps-[60px] pb-[60px] absolute top-[60%]">
+        <div className="flex-col flex ps-[60px] pb-[60px] absolute top-[60%]">
           <div className="text-[#fff] flex-col flex items-start leading-[70px] pb-[30px]">
             <span className="text-2xl">NEW</span>
             <span className="text-[80px] max-w-[100px]">Beats Cables</span>
