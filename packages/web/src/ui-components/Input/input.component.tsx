@@ -49,12 +49,6 @@ export function Input({
       )}
 
       <div
-        // className={classNames({
-        //   [styles.inputWrapper]: true,
-        //   [styles.focused]: isFocused == true,
-        //   [styles.error]: error,
-        //   [wrapperClassName ? wrapperClassName : ""]: wrapperClassName,
-        // })}
         style={otherProps.disabled ? { background: "#F7F7F7" } : {}}
         className="relative w-full"
       >

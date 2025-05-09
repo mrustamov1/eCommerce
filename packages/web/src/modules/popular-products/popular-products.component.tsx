@@ -3,6 +3,9 @@ import video from "../../assets/videos/video.mp4";
 import { Button } from "../../ui-components/button/button.component";
 
 export function PopularProducts() {
+  // ---------------------------------------------------------------------------
+  // data
+  // ---------------------------------------------------------------------------
   const products = [
     {
       id: 1,
@@ -29,6 +32,8 @@ export function PopularProducts() {
       colors: ["#596e79", "#f76b8a", "#000"],
     },
   ];
+
+  // ---------------------------------------------------------------------------
   return (
     <section className="flex flex-col justify-center items-center py-[4.5rem]">
       <h1 className="text-[2.5rem] font-bold">Popular Now</h1>
@@ -62,6 +67,11 @@ export function PopularProducts() {
           ))}
         </div>
       </div>
+
+      {/* --------------------------------------------------------------------------- */}
+      {/* VIDEO */}
+      {/* --------------------------------------------------------------------------- */}
+
       <div className="relative w-full h-auto">
         <video
           src={video}

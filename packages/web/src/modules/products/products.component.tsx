@@ -1,6 +1,9 @@
 import { Images } from "../../assets/image";
 
 export function Products() {
+  // ---------------------------------------------------------------------------
+  // data
+  // ---------------------------------------------------------------------------
   const products = [
     {
       id: 1,
@@ -35,6 +38,8 @@ export function Products() {
       photo: `${Images.product5}`,
     },
   ];
+
+  // ---------------------------------------------------------------------------
   return (
     <section className="w-full overflow-x-scroll overflow-y-hidden pt-[60px] px-6 pb-[60px] scrollbar-hidden">
       <div className="flex gap-5 w-max perspective-[1000px]">

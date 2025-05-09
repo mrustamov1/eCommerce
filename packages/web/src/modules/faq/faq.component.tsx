@@ -2,6 +2,9 @@ import { Images } from "../../assets/image";
 import { Button } from "../../ui-components/button/button.component";
 
 export function FAQ() {
+  // ---------------------------------------------------------------------------
+  // data
+  // ---------------------------------------------------------------------------
   const data = [
     {
       id: 1,
@@ -22,6 +25,8 @@ export function FAQ() {
       description: "Return eligible items to Apple within 14 days of receipt.",
     },
   ];
+
+  // ---------------------------------------------------------------------------
   return (
     <section className="flex flex-col justify-center items-center">
       <h1 className="text-[2rem] font-bold">Seamless Shopping Through Apple</h1>
@@ -43,15 +48,13 @@ export function FAQ() {
           ))}
         </div>
         <div className="flex justify-center">
-          <button className="relative overflow-hidden group px-[30px] py-[8px] font-medium text-[#161616] border-2 border-[#161616] rounded-3xl hover:border-2 cursor-pointer">
-            <span className="relative z-10 transition-colors duration-300 group-hover:text-white ">
-              VIEW ALL FAQS
-            </span>
-            <span className="absolute bottom-0 left-0 w-full h-0 bg-[#EB4443] transition-all duration-300 ease-in-out group-hover:h-full"></span>
-          </button>
+          <Button title="VIEW ALL FAQS" mode="simple" />
         </div>
       </div>
 
+      {/* --------------------------------------------------------------------------- */}
+      {/* STUDIO */}
+      {/* --------------------------------------------------------------------------- */}
       <div className="pt-16 relative">
         <img src={Images.studio} alt="" />
         <div className="absolute top-[50%] pl-[60px]">

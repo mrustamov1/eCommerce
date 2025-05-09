@@ -2,6 +2,7 @@ import { Images } from "../../assets/image";
 import { Button } from "../../ui-components/button/button.component";
 
 export function ProductComparison() {
+  // ---------------------------------------------------------------------------
   return (
     <section className="relative flex flex-col items-center justify-center">
       <div>
@@ -16,7 +17,7 @@ export function ProductComparison() {
             </p>
           </div>
           <div>
-            <Button title="COMPARE PRODCUTS" mode="dark"/>
+            <Button title="COMPARE PRODCUTS" mode="dark" />
           </div>
         </div>
         <div className="max-w-[1320px] w-full m-auto py-16 flex flex-col gap-3 text-[0.8125rem] text-[#757575]">

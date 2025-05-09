@@ -1,8 +1,9 @@
 import { Images } from "../../assets/image";
-import { Button } from "../../ui-components/button/button.component";
 import { Input } from "../../ui-components/Input/input.component";
+import { Button } from "../../ui-components/button/button.component";
 
 export function SignIn() {
+  // ---------------------------------------------------------------------------
   return (
     <section className="flex flex-row justify-between">
       <div className="flex items-center flex-col justify-center w-[100%]">
@@ -14,24 +15,25 @@ export function SignIn() {
           />
           <span className="pb-[10px] text-[16px]">Welcome back !!!</span>
           <h1 className="pb-[30px] text-[56px] font-semibold">Sign In</h1>
-
           <div className="flex flex-col gap-7">
             <Input label="Email" type="email" placeholder="Email Address" />
             <Input label="Password" type="password" placeholder="Password" />
           </div>
           <div className="flex flex-col justify-center mt-8 gap-5 text-center">
-           <Button title="SIGN IN" mode="login"/>
+            <Button title="SIGN IN" mode="login" />
             <p>
               I already have an account ?
               <a className="text-[#F47458]" href=" Sign up">
-                {" "}
                 Sign In
               </a>
             </p>
           </div>
         </div>
       </div>
-      <img className="" src={Images.group} alt="" />
+      {/* --------------------------------------------------------------------------- */}
+      {/* SIGN IN BACKGROUND IMAGE */}
+      {/* --------------------------------------------------------------------------- */}
+      <img src={Images.group} alt="Group" />
     </section>
   );
 }
