@@ -1,4 +1,5 @@
 import logo from "./images/beats.png";
+import group from "./images/group.png";
 import box from "./images/package.svg";
 import studio from "./images/studio.jpg";
 import banner from "./images/banner.jpg";
@@ -17,6 +18,7 @@ import rotate from "./images/rotate-ccw-square.svg";
 export const Images = {
   box,
   logo,
+  group,
   rotate,
   banner,
   airpod,

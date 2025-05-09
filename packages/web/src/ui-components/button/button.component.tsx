@@ -11,7 +11,7 @@ export const Button = memoComponent(
   }: PropsWithChildren<
     {
       title?: string;
-      mode?: "primary" | "simple" | "dark";
+      mode?: "primary" | "simple" | "light" | "dark" | "login";
     } & React.ButtonHTMLAttributes<HTMLButtonElement>
   >) {
     return (
@@ -20,14 +20,16 @@ export const Button = memoComponent(
         {...otherProps}
         className={
           (mode === "primary" &&
-            "relative overflow-hidden group px-[25px] py-[8px] tracking-tight font-semibold text-[#161616] rounded-3xl bg-[#fff] border-2 border-transparent hover:border-2 hover:border-[#fff] cursor-pointer") ||
-          (mode === "simple" && "bg-[blue] w-[100px] h-[100px]")
+            "relative overflow-hidden group px-[25px] py-[8px] tracking-tight font-semibold rounded-3xl cursor-pointer text-[#161616] bg-[#fff] border-2 border-transparent hover:border-2 hover:border-[#fff]") ||
+          (mode === "simple" &&
+            "relative overflow-hidden group px-[25px] py-[8px] tracking-tight font-semibold rounded-3xl cursor-pointer text-[#161616] border-2 border-[#161616]") ||
+          (mode === "light" &&
+            "relative overflow-hidden group px-[25px] py-[8px] tracking-tight font-semibold rounded-3xl cursor-pointer text-[#fff]  border-2 border-[#fff]") ||
+          (mode === "dark" &&
+            "relative overflow-hidden group px-[25px] py-[8px] tracking-tight font-semibold rounded-3xl cursor-pointer text-[#161616]  border-2 border-[#161616]") ||
+          (mode === "login" &&
+            "relative overflow-hidden group px-[25px] py-[8px] tracking-tight font-semibold rounded-3xl  cursor-pointer text-[#fff] bg-[#F47458]")
         }
-        // className={classNames(otherProps.className, {
-        //   [styles.primary]: mode === "primary",
-        //   [styles.simple]: mode === "simple",
-        //   [styles.dark]: mode === "dark",
-        // })}
       >
         <span className="relative z-10 transition-colors duration-300 group-hover:text-white ">
           {children} {title}

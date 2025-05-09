@@ -24,7 +24,7 @@
   font-weight: 900;
 }
 
-body{
+body {
   background-color: #f0f0f0;
 }
 
@@ -33,6 +33,6 @@ body{
 }
 
 .scrollbar-hidden {
-  -ms-overflow-style: none; 
-  scrollbar-width: none; 
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }
