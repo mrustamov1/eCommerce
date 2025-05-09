@@ -2,6 +2,7 @@ import { Images } from "../../assets/image";
 import { Button } from "../../ui-components/button/button.component";
 
 export function Header() {
+  // ---------------------------------------------------------------------------
   return (
     <>
       <header className="flex justify-between items-center px-[30px] py-[13px] sticky top-0 z-2 bg-[#fff]">
