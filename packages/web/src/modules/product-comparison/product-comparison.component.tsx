@@ -1,4 +1,5 @@
 import { Images } from "../../assets/image";
+import { Button } from "../../ui-components/button/button.component";
 
 export function ProductComparison() {
   return (
@@ -15,12 +16,7 @@ export function ProductComparison() {
             </p>
           </div>
           <div>
-            <button className="relative overflow-hidden group px-[25px] py-[8px] font-medium text-[#161616] border-2 border-[#161616] rounded-3xl cursor-pointer">
-              <span className="relative z-10 transition-colors duration-300 group-hover:text-white ">
-                COMPARE PRODCUTS
-              </span>
-              <span className="absolute bottom-0 left-0 w-full h-0 bg-[#F04847] transition-all duration-300 ease-in-out group-hover:h-full"></span>
-            </button>
+            <Button title="COMPARE PRODCUTS" mode="dark"/>
           </div>
         </div>
         <div className="max-w-[1320px] w-full m-auto py-16 flex flex-col gap-3 text-[0.8125rem] text-[#757575]">
