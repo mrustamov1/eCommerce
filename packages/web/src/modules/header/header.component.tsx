@@ -1,7 +1,14 @@
+import { useNavigate } from "react-router-dom";
 import { Images } from "../../assets/image";
 import { Button } from "../../ui-components/button/button.component";
 
 export function Header() {
+  // ---------------------------------------------------------------------------
+  // variables
+  // ---------------------------------------------------------------------------
+
+  const navigate = useNavigate();
+
   // ---------------------------------------------------------------------------
   return (
     <>
@@ -15,7 +22,11 @@ export function Header() {
             <a href="Shop">Support</a>
           </li>
         </ul>
-        <Button title="Sign In" mode="simple" />
+        <Button
+          title="Sign In"
+          mode="simple"
+          onClick={() => navigate("/sign-in")}
+        />
       </header>
       <main
         style={{
