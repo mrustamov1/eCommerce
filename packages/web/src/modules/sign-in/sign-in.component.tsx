@@ -1,8 +1,10 @@
+import { useNavigate } from "react-router-dom";
 import { Images } from "../../assets/image";
 import { Input } from "../../ui-components/Input/input.component";
 import { Button } from "../../ui-components/button/button.component";
 
 export function SignIn() {
+  const navigate = useNavigate();
   // ---------------------------------------------------------------------------
   return (
     <section className="flex flex-row justify-between">
@@ -23,8 +25,12 @@ export function SignIn() {
             <Button title="SIGN IN" mode="login" />
             <p>
               I already have an account ?
-              <a className="text-[#F47458]" href=" Sign up">
-                Sign In
+              <a
+                className="text-[#F47458]"
+                onClick={() => navigate("/sign-up")}
+              >
+                {" "}
+                Sign Up
               </a>
             </p>
           </div>
