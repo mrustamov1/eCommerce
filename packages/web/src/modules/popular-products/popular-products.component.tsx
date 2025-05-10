@@ -1,12 +1,16 @@
+import { products } from "./data";
 import { useNavigate } from "react-router-dom";
 import video from "../../assets/videos/video.mp4";
 import { Button } from "../../ui-components/button/button.component";
-import { products } from "./data";
 
 export function PopularProducts() {
+  // ---------------------------------------------------------------------------
+  // variables
+  // ---------------------------------------------------------------------------
+
   const navigate = useNavigate();
   // ---------------------------------------------------------------------------
-  // data
+  // functions
   // ---------------------------------------------------------------------------
 
   function handleID(id: number) {

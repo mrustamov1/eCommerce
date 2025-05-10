@@ -6,10 +6,10 @@ export const UserRegisterSchema = z
     id: z.string().optional(),
     name: z.string().nonempty("Name is required"),
     surname: z.string().nonempty("Surname is required"),
-    email: z.string().email().trim(),
+    email: z.string().email(),
     password: z.string().min(8),
     confirmPassword: z.string(),
-    role: UserKindEnum,
+    // role: UserKindEnum,
   })
   .refine((data) => data.password === data.confirmPassword, {
     message: "Password do not matched",

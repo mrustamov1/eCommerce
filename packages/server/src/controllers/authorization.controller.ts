@@ -4,7 +4,7 @@ import { AuthSchema } from "../schema/auth.schema.js";
 import { UserEntity } from "../entities/user.entity.js";
 import { SchemaUtiles } from "../utils/schema.utile.js";
 import { UserKind, UserType } from "../types/user.type.js";
-import { RegistrationModel } from "../models/auth.model.js";
+import { LoginModel, RegistrationModel } from "../models/auth.model.js";
 import { DataSourceUtils } from "../utils/data-source.utile.js";
 
 export const AuthorizationController = {
@@ -37,6 +37,28 @@ export const AuthorizationController = {
       res.status(200).send({ id: newUser.id });
     } catch (error) {
       res.send("Something went wrong");
+    }
+  },
+
+  async login(req: Request<unknown, unknown, LoginModel>, res: Response) {
+    try {
+      const user = await DataSourceUtils.findOne(UserEntity, {
+        where: { email: req.body.email },
+      });
+
+      if (
+        !user ||
+        !(await bcrypt.compare(req.body.password.trim(), user.password))
+      ) {
+        res.status(404).send("User not found");
+        return;
+      } else {
+        console.log("Something went wrong");
+      }
+
+      res.status(200).send({ id: user.id });
+    } catch (error) {
+      console.log(error);
     }
   },
 };
