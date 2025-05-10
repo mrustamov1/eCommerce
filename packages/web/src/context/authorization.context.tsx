@@ -31,8 +31,8 @@ export const AuthorizationProvider: React.FC<AuthorizationProviderProps> = ({
   const navigate = useNavigate();
   const [user, setUser] = useState<UserType | null>(null);
 
-  const currentUser = localStorage.getItem("currentUser");
   useEffect(() => {
+    const currentUser = localStorage.getItem("currentUser");
     if (currentUser) {
       setUser(JSON.parse(currentUser));
     }

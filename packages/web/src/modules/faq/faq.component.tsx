@@ -1,7 +1,9 @@
+import { useNavigate } from "react-router-dom";
 import { Images } from "../../assets/image";
 import { Button } from "../../ui-components/button/button.component";
 
 export function FAQ() {
+  const navigate = useNavigate();
   // ---------------------------------------------------------------------------
   // data
   // ---------------------------------------------------------------------------
@@ -63,7 +65,11 @@ export function FAQ() {
             <span className="text-[2rem]">Featuring Shohei Ohtani</span>
           </div>
           <div>
-            <Button title="SHOP" mode="simple" />
+            <Button
+              onClick={() => navigate("/products")}
+              title="SHOP"
+              mode="simple"
+            />
           </div>
         </div>
       </div>

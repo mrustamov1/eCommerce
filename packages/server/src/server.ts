@@ -21,6 +21,7 @@ server.use(
   })
 );
 
+server.post("/api/auth/login", AuthorizationController.login);
 server.post("/api/auth/register", AuthorizationController.register);
 
 await AppDataSource.initialize();

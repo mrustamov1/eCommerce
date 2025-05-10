@@ -17,6 +17,7 @@ export function SignUp() {
   });
 
   const onSubmit: SubmitHandler<UserRegisterType> = async (data) => {
+    console.log("Submitting data");
     try {
       const response = await fetch("http://localhost:9090/api/auth/register", {
         method: "POST",
@@ -25,14 +26,13 @@ export function SignUp() {
       });
 
       if (!response.ok) {
-        const errorResponse = await response.json();
-        console.log("Error:", errorResponse.message || "Unknown error");
-        return;
+        console.log("Invalid email or password");
+        return false;
       }
 
       const result = await response.json();
       console.log("Registered successfully:", result);
-      navigate("/"); // No need to await here
+      navigate("/");
     } catch (error) {
       console.log("Error during registration:", error);
     }
