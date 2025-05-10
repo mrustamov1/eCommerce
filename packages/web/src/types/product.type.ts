@@ -11,7 +11,6 @@ export type DeliveryInfoType = z.infer<typeof DeliveryInfoSchema>;
 export const ProductSchema = z.object({
   id: z.number(),
   images: z.string().array(),
-  mainImage: z.string(),
   title: z.string(),
   subTitle: z.string(),
   price: z.string(),
