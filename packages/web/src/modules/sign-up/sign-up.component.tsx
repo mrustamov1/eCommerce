@@ -4,7 +4,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { Input } from "../../ui-components/Input/input.component";
 import { Button } from "../../ui-components/button/button.component";
-import { UserRegisterSchema, UserRegisterType } from "../../types/user.type";
+import { UserRegisterSchema, UserRegisterType } from "../../types/auth.type";
 
 export function SignUp() {
   const navigate = useNavigate();

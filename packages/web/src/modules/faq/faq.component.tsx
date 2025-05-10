@@ -13,13 +13,13 @@ export function FAQ() {
       description: "Enjoy free two-day delivery on most in-stock items.",
     },
     {
-      id: 1,
+      id: 2,
       photo: `${Images.shoppingbeg}`,
       title: "In-Store Pickup",
       description: "Pick up your online order at an Apple Store near you.",
     },
     {
-      id: 1,
+      id: 3,
       photo: `${Images.rotate}`,
       title: "Easy Returns",
       description: "Return eligible items to Apple within 14 days of receipt.",

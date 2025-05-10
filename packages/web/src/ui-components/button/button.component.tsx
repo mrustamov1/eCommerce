@@ -11,7 +11,7 @@ export const Button = memoComponent(
   }: PropsWithChildren<
     {
       title?: string;
-      mode?: "primary" | "simple" | "light" | "dark" | "login";
+      mode?: "primary" | "simple" | "light" | "dark" | "dark-rounded" | "login";
     } & React.ButtonHTMLAttributes<HTMLButtonElement>
   >) {
     return (
@@ -26,6 +26,8 @@ export const Button = memoComponent(
           (mode === "light" &&
             "relative overflow-hidden group px-[25px] py-[8px] tracking-tight font-semibold rounded-3xl cursor-pointer text-[#fff]  border-2 border-[#fff]") ||
           (mode === "dark" &&
+            "relative overflow-hidden group px-[25px] py-[8px] tracking-tight font-semibold rounded-3xl cursor-pointer text-[#fff] bg-[#212121]") ||
+          (mode === "dark-rounded" &&
             "relative overflow-hidden group px-[25px] py-[8px] tracking-tight font-semibold rounded-3xl cursor-pointer text-[#161616]  border-2 border-[#161616]") ||
           (mode === "login" &&
             "relative overflow-hidden group px-[25px] py-[8px] tracking-tight font-semibold rounded-3xl  cursor-pointer text-[#fff] bg-[#F47458]")
