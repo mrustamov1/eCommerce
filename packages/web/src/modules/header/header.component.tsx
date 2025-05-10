@@ -1,12 +1,14 @@
 import { useNavigate } from "react-router-dom";
 import { Images } from "../../assets/image";
 import { Button } from "../../ui-components/button/button.component";
+import { useAuthorization } from "../../context/authorization.context";
 
 export function Header() {
   // ---------------------------------------------------------------------------
   // variables
   // ---------------------------------------------------------------------------
 
+  const { user } = useAuthorization();
   const navigate = useNavigate();
 
   // ---------------------------------------------------------------------------
@@ -22,11 +24,19 @@ export function Header() {
             <a href="Shop">Support</a>
           </li>
         </ul>
-        <Button
-          title="Sign In"
-          mode="simple"
-          onClick={() => navigate("/sign-in")}
-        />
+        {user ? (
+          <Button
+            title="Sign In"
+            mode="simple"
+            onClick={() => navigate("/sign-in")}
+          />
+        ) : (
+          <Button
+            title="Sign Up"
+            mode="simple"
+            onClick={() => navigate("/sign-in")}
+          />
+        )}
       </header>
       <main
         style={{

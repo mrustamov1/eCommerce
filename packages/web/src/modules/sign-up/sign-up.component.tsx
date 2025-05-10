@@ -1,10 +1,10 @@
 import { Images } from "../../assets/image";
-import { UserRegisterSchema, UserRegisterType } from "../../types/user.type";
+import { useNavigate } from "react-router-dom";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { SubmitHandler, useForm } from "react-hook-form";
 import { Input } from "../../ui-components/Input/input.component";
 import { Button } from "../../ui-components/button/button.component";
-import { useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { useNavigate } from "react-router-dom";
+import { UserRegisterSchema, UserRegisterType } from "../../types/user.type";
 
 export function SignUp() {
   const navigate = useNavigate();
@@ -16,35 +16,35 @@ export function SignUp() {
     resolver: zodResolver(UserRegisterSchema),
   });
 
-  async function signUp(props: UserRegisterType) {
-    const data = {
-      name: props.name.trim(),
-      surname: props.surname,
-      email: props.email,
-      password: props.password,
-    };
-
+  const onSubmit: SubmitHandler<UserRegisterType> = async (data) => {
     try {
       const response = await fetch("http://localhost:9090/api/auth/register", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(data),
       });
-      const result = response.json();
-      console.log("Registered successfuly:", result);
-      navigate("/");
+
+      if (!response.ok) {
+        const errorResponse = await response.json();
+        console.log("Error:", errorResponse.message || "Unknown error");
+        return;
+      }
+
+      const result = await response.json();
+      console.log("Registered successfully:", result);
+      navigate("/"); // No need to await here
     } catch (error) {
-      console.log(error);
+      console.log("Error during registration:", error);
     }
-  }
+  };
 
   // ---------------------------------------------------------------------------
   return (
-    <section className="flex flex-row justify-between">
+    <section className="flex justify-between">
       <div className="flex items-center flex-col justify-center w-[100%]">
-        <div className="shadow-[0px_19px_40px_0px_#0000000D] p-[61px] rounded-2xl my-10">
+        <div className="shadow-[0px_19px_40px_0px_#0000000D] px-[50px] py-[30px] rounded-2xl my-5">
           <img
-            className="w-[32px] h-[32px] mb-[40px]"
+            className="w-[32px] h-[32px] mb-[20px]"
             src={Images.logo}
             alt="Logo"
           />
@@ -53,7 +53,10 @@ export function SignUp() {
           </span>
           <h1 className="pb-[30px] text-[56px] font-semibold">Sign Up</h1>
 
-          <form className="flex flex-col gap-7" onClick={handleSubmit(signUp)}>
+          <form
+            className="flex flex-col gap-7"
+            onSubmit={handleSubmit(onSubmit)}
+          >
             <Input
               {...register("name")}
               label="Name"
@@ -63,42 +66,40 @@ export function SignUp() {
             />
             <Input
               {...register("surname")}
-              error={errors.surname?.message}
               label="Surname"
               type="text"
               placeholder="Surname"
+              error={errors.surname?.message}
             />
             <Input
               {...register("email")}
-              error={errors.email?.message}
               label="Email Address"
               type="email"
               placeholder="Email Address"
+              error={errors.email?.message}
             />
             <Input
               {...register("password")}
-              error={errors.password?.message}
               label="Password"
               type="password"
               placeholder="Password"
+              error={errors.password?.message}
             />
             <Input
               {...register("confirmPassword")}
-              error={errors.confirmPassword?.message}
               label="Confirm Password"
               type="password"
               placeholder="Confirm Password"
+              error={errors.confirmPassword?.message}
             />
+            <div className="flex flex-col justify-center mt-8 gap-5 text-center">
+              <Button type="submit" title="SIGN UP" mode="login" />
+              <p>
+                I don’t have an account ?
+                <a className="text-[#F47458]">Sign up</a>
+              </p>
+            </div>
           </form>
-          <div className="flex flex-col justify-center mt-8 gap-5 text-center">
-            <Button type="submit" title="SIGN UP" mode="login" />
-            <p>
-              I don’t have an account ?
-              <a className="text-[#F47458]" href=" Sign up">
-                Sign up
-              </a>
-            </p>
-          </div>
         </div>
       </div>
       {/* --------------------------------------------------------------------------- */}

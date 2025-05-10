@@ -8,7 +8,9 @@ export function MainRoutes() {
   return (
     <Routes>
       <Route path="/" element={<HomePage />} />
-      <Route path="/product:id" element={<ProductDetails />} />
+      <Route path="/product" element={<ProductDetails />}>
+        <Route path="/product:id" element={<ProductDetails />} />
+      </Route>
       <Route path="/sign-up" element={<SignUp />} />
       <Route path="/sign-in" element={<SignIn />} />
     </Routes>
