@@ -1,8 +1,10 @@
+import { useNavigate } from "react-router-dom";
 import { Images } from "../../assets/image";
 import video from "../../assets/videos/video.mp4";
 import { Button } from "../../ui-components/button/button.component";
 
 export function PopularProducts() {
+  const navigate = useNavigate();
   // ---------------------------------------------------------------------------
   // data
   // ---------------------------------------------------------------------------
@@ -33,6 +35,10 @@ export function PopularProducts() {
     },
   ];
 
+  function handleID(id: number) {
+    navigate(`/products/${id.toString()}`);
+  }
+
   // ---------------------------------------------------------------------------
   return (
     <section className="flex flex-col justify-center items-center py-[4.5rem]">
@@ -41,6 +47,7 @@ export function PopularProducts() {
         <div className="flex gap-5 perspective-[1000px]">
           {products.map((product) => (
             <article
+              onClick={() => handleID(product.id)}
               key={product.id}
               className="cursor-pointer bg-[#fff] p-[1.875rem] rounded-2xl flex flex-col leading-8 flex-1 shadow-[2px_4px_12px_rgba(0,0,0,0.1)] transition-transform duration-300 hover:scale-[1.02]"
             >
