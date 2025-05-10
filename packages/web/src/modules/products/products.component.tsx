@@ -1,63 +1,55 @@
-import { Images } from "../../assets/image";
+import { useNavigate } from "react-router-dom";
+import { Button } from "../../ui-components/button/button.component";
+import { Input } from "../../ui-components/Input/input.component";
+import { Header } from "../header/header.component";
+import { products } from "../popular-products/data";
 
 export function Products() {
-  // ---------------------------------------------------------------------------
-  // data
-  // ---------------------------------------------------------------------------
-  const products = [
-    {
-      id: 1,
-      model: "Register Your Beats",
-      description:
-        "Get the most out of your Beats with latest software updates and more.",
-      photo: `${Images.product1}`,
-    },
-    {
-      id: 2,
-      model: "Collaborations",
-      description: "Explore one-of-a-kind, limited-edition product collabs.",
-      photo: `${Images.product2}`,
-    },
-    {
-      id: 3,
-      model: "Find Your Beats",
-      description:
-        "If your Beats are missing, track them down with the ‘Find My’ app.",
-      photo: `${Images.product3}`,
-    },
-    {
-      id: 4,
-      model: "Beats App for Android",
-      description: "Download the Beats app to unlock additional features.",
-      photo: `${Images.product4}`,
-    },
-    {
-      id: 5,
-      model: "Free Apple Music",
-      description: "Enjoy 3 months of Apple Music free with select Beats.",
-      photo: `${Images.product5}`,
-    },
-  ];
-
-  // ---------------------------------------------------------------------------
+  const navigate = useNavigate();
+  function handleID(id: number) {
+    navigate(`/products/${id.toString()}`);
+  }
   return (
-    <section className="w-full overflow-x-scroll overflow-y-hidden pt-[60px] px-6 pb-[60px] scrollbar-hidden">
-      <div className="flex gap-5 w-max perspective-[1000px]">
-        {products.map((product) => (
-          <article
-            key={product.id}
-            className=" w-[333px] cursor-pointer bg-[#fff] p-[1.875rem] rounded-2xl flex flex-col leading-8 shadow-[2px_4px_12px_rgba(0,0,0,0.1)] transition-transform duration-300 hover:scale-[1.02]"
-          >
-            <span className="font-bold text-[30px]">{product.model}</span>
-            <p>{product.description}</p>
-            <img
-              className="max-h-[295px] my-auto"
-              src={product.photo}
-              alt="Photo"
-            />
-          </article>
-        ))}
-      </div>
-    </section>
+    <>
+      <Header />
+      <section className="p-[30px]">
+        <div className="flex justify-between items-center">
+          <h1 className="text-[3rem] font-semibold">Products</h1>
+          <div className="flex gap-2">
+            <Input type="search" placeholder="Search your desired product..." />
+            <Button title="Search" mode="login" className="rounded-[10px]" />
+          </div>
+        </div>
+          <div className="grid grid-cols-4 gap-5 perspective-[1000px] pt-12">
+            {products.map((product) => (
+              <article
+                onClick={() => handleID(product.id)}
+                key={product.id}
+                className="cursor-pointer bg-[#fff] p-[1.875rem] rounded-2xl flex flex-col leading-8 flex-1 shadow-[2px_4px_12px_rgba(0,0,0,0.1)] transition-transform duration-300 hover:scale-[1.02]"
+              >
+                <span className="text-[#e31837] font-bold">
+                  {product.version}
+                </span>
+                <span className="font-bold text-[32px]">{product.model}</span>
+                <span className="font-bold">{product.price}</span>
+                <img
+                  className="max-h-[295px] my-auto"
+                  src={product.photo}
+                  alt="Product Photo"
+                />
+                <div className="flex justify-center gap-2 pt-8">
+                  {product.colors?.map((color, index) => (
+                    <span
+                      key={index}
+                      className="w-[1.25rem] h-[1.25rem] rounded-full"
+                      style={{ backgroundColor: color }}
+                    />
+                  ))}
+                </div>
+              </article>
+            ))}
+          </div>
+      </section>
+    </>
   );
 }

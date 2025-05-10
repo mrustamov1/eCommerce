@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import clsx from "clsx";
 
 export function Input({
   label,
@@ -8,12 +9,14 @@ export function Input({
   onValueChange,
   inputRef,
   validation,
+  className,
   ...otherProps
 }: {
   label?: string;
   type: React.HTMLInputTypeAttribute;
   showErrorText?: boolean;
   error?: string;
+  className?: string;
   onValueChange?: (value: string) => void;
   validation?: {
     condition: (value: string) => boolean;
@@ -58,7 +61,10 @@ export function Input({
         {/* --------------------------------------------------------------------------- */}
 
         <input
-          className="min-w-[478px] w-full px-3 py-3 rounded-[10px] border-2 border-[#000]"
+          className={clsx(
+            "min-w-[478px] w-full px-3 py-3 rounded-[10px] border-2 border-[#000]",
+            className
+          )}
           ref={inputRef}
           type={inputType}
           onChange={

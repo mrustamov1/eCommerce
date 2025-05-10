@@ -1,39 +1,13 @@
 import { useNavigate } from "react-router-dom";
-import { Images } from "../../assets/image";
 import video from "../../assets/videos/video.mp4";
 import { Button } from "../../ui-components/button/button.component";
+import { products } from "./data";
 
 export function PopularProducts() {
   const navigate = useNavigate();
   // ---------------------------------------------------------------------------
   // data
   // ---------------------------------------------------------------------------
-  const products = [
-    {
-      id: 1,
-      version: "NEW",
-      model: "PowerBeats Pro 2",
-      price: "$249.99",
-      photo: `${Images.airpod}`,
-      colors: ["#233142", "#455d7a", "#f95959", "#e3e3e3"],
-    },
-    {
-      id: 2,
-      version: "NEW",
-      model: "PowerBeats Pro 2",
-      price: "$249.99",
-      photo: `${Images.airpod2}`,
-      colors: ["#a2a8d3", "#38598b", "#e7eaf6", "#113f67"],
-    },
-    {
-      id: 3,
-      version: "NEW",
-      model: "PowerBeats Pro 2",
-      price: "$249.99",
-      photo: `${Images.airpod3}`,
-      colors: ["#596e79", "#f76b8a", "#000"],
-    },
-  ];
 
   function handleID(id: number) {
     navigate(`/products/${id.toString()}`);
@@ -45,7 +19,7 @@ export function PopularProducts() {
       <h1 className="text-[2.5rem] font-bold">Popular Now</h1>
       <div className="w-full max-w-[1200px] mx-auto pt-16">
         <div className="flex gap-5 perspective-[1000px]">
-          {products.map((product) => (
+          {products.slice(0, 3).map((product) => (
             <article
               onClick={() => handleID(product.id)}
               key={product.id}
@@ -95,7 +69,11 @@ export function PopularProducts() {
             <span className="text-[32px]">Fresh juice for your devices</span>
           </div>
           <div className="flex gap-5">
-            <Button title="SHOP" mode="primary" />
+            <Button
+              onClick={() => navigate("/products")}
+              title="SHOP"
+              mode="primary"
+            />
             <Button title=" WATCH THE FILM" mode="light" />
           </div>
         </div>
