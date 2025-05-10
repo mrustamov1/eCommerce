@@ -14,7 +14,15 @@ export const Button = memoComponent(
     {
       title?: string;
       className?: string;
-      mode?: "primary" | "simple" | "light" | "dark" | "dark-rounded" | "login";
+      mode?:
+        | "primary"
+        | "simple"
+        | "light"
+        | "dark"
+        | "dark-rounded"
+        | "login"
+        | "edit"
+        | "danger";
     } & React.ButtonHTMLAttributes<HTMLButtonElement>
   >) {
     const baseClass =
@@ -28,6 +36,8 @@ export const Button = memoComponent(
       dark: "text-[#fff] bg-[#212121]",
       "dark-rounded": "text-[#161616]  border-2 border-[#161616]",
       login: "text-[#fff] bg-[#F47458]",
+      edit: "px-3 py-1 bg-blue-600 text-white rounded hover:bg-blue-700",
+      danger: "px-3 py-1 bg-red-600 text-white rounded hover:bg-red-700",
     };
 
     return (
