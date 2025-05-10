@@ -33,6 +33,7 @@ export function Input({
   useEffect(() => {
     setInputType(type);
   }, [type]);
+
   return (
     <div>
       {/* --------------------------------------------------------------------------- */}
@@ -67,6 +68,7 @@ export function Input({
                 }
               : undefined
           }
+         
           {...otherProps}
         />
 
@@ -106,7 +108,7 @@ export function Input({
       {/* --------------------------------------------------------------------------- */}
 
       {error && showErrorText && (
-        <span className="text-[#e12e2e] text-[11px] leading-[15px] absolute bottom-[30%] left-0 whitespace-nowrap overflow-ellipsis">
+        <span className="text-[#e12e2e] text-[11px] not-italic font-normal leading-[1.5rem] mt-2">
           {error}
         </span>
       )}

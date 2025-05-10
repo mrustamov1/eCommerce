@@ -1,5 +1,12 @@
 import { MainRoutes } from "./routes/app.routes";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+
+const querClient = new QueryClient();
 
 export function App() {
-  return <MainRoutes />;
+  return (
+    <QueryClientProvider client={querClient}>
+      <MainRoutes />;
+    </QueryClientProvider>
+  );
 }

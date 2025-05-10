@@ -14,4 +14,4 @@ COPY ./src ./src
 
 RUN ./node_modules/.bin/tsc
 
-CMD ["node", "src/index.js"]
+CMD ["node", "src/server.js"]
