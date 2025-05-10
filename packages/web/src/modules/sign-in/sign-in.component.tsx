@@ -7,7 +7,7 @@ export function SignIn() {
   const navigate = useNavigate();
   // ---------------------------------------------------------------------------
   return (
-    <section className="flex flex-row justify-between">
+    <section className="flex justify-between h-[100vh]">
       <div className="flex items-center flex-col justify-center w-[100%]">
         <div className="shadow-[0px_19px_40px_0px_#0000000D] p-[61px] rounded-2xl my-10">
           <img
@@ -26,7 +26,7 @@ export function SignIn() {
             <p>
               I already have an account ?
               <a
-                className="text-[#F47458]"
+                className="text-[#F47458] cursor-pointer hover:underline"
                 onClick={() => navigate("/sign-up")}
               >
                 {" "}
