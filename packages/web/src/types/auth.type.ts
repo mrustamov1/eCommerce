@@ -1,5 +1,5 @@
 import { z } from "zod";
-import { UserKindEnum } from "./user.type";
+// import { UserKindEnum } from "./user.type";
 
 export const UserRegisterSchema = z
   .object({
