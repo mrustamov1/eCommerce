@@ -3,6 +3,7 @@ import { Config } from "./config.js";
 import cors from "cors";
 import { AppDataSource } from "./setup.js";
 import { AuthorizationController } from "./controllers/authorization.controller.js";
+import { UserController } from "./controllers/user.controller.js";
 
 const server = express();
 
@@ -23,6 +24,9 @@ server.use(
 
 server.post("/api/auth/login", AuthorizationController.login);
 server.post("/api/auth/register", AuthorizationController.register);
+
+server.get("/api/user/get", UserController.list);
+server.delete("/api/user/delete", UserController.delete);
 
 await AppDataSource.initialize();
 

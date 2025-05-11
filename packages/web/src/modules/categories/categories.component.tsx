@@ -41,14 +41,14 @@ export function Categories() {
 
   // ---------------------------------------------------------------------------
   return (
-    <>
+    <div>
       <div className="flex justify-end p-5 cursor-pointer">
         <span className="flex gap-2 items-center text-black hover:text-[#6c63ff] group">
           See All
           <i className="fa-light fa-arrow-right transform transition-transform duration-300 group-hover:translate-x-2"></i>
         </span>
       </div>
-      <section className="w-full overflow-x-scroll overflow-y-hidden px-6 pb-[60px] scrollbar-hidden">
+      <section className="w-full overflow-x-scroll overflow-y-hidden flex justify-center pb-[60px] scrollbar-hidden">
         <div className="flex gap-5 w-max perspective-[1000px]">
           {products.map((product) => (
             <article
@@ -66,6 +66,6 @@ export function Categories() {
           ))}
         </div>
       </section>
-    </>
+    </div>
   );
 }
