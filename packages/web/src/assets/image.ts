@@ -26,6 +26,7 @@ import head1 from "./product-images/head1.jpg";
 import head2 from "./product-images/head2.jpg";
 import head3 from "./product-images/head3.jpg";
 import head4 from "./product-images/head4.jpg";
+import userProfile from "./images/user-profile.png";
 import shoppingbeg from "./images/shopping-bag.svg";
 import rotate from "./images/rotate-ccw-square.svg";
 export const Images = {
@@ -58,5 +59,6 @@ export const Images = {
   product3,
   product4,
   product5,
+  userProfile,
   shoppingbeg,
 };

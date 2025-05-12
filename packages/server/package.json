@@ -23,7 +23,9 @@
     "zod": "3.24.4",
     "bcrypt": "5.1.1",
     "jsonwebtoken": "9.0.2",
-    "dotenv": "16.5.0"
+    "dotenv": "16.5.0",
+    "debug": "4.4.0"
+ 
   },
   "devDependencies": {
     "@eslint/js": "^9.25.0",
@@ -39,6 +41,8 @@
     "vite": "^6.3.5",
     "@types/express": "5.0.1",
     "@types/bcrypt": "5.0.2",
-    "@types/cors": "2.8.18"
+    "@types/cors": "2.8.18",
+    "@types/jsonwebtoken": "9.0.9",
+    "@types/debug": "4.1.12"
   }
 }

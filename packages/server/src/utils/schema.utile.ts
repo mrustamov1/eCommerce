@@ -1,7 +1,7 @@
 import Ajv, { Schema } from "ajv";
 import addFormats from "ajv-formats";
 
-export function SchemaUtiles<T>(schema: Schema, req: T) {
+export function SchemaUtils<T>(schema: Schema, req: T) {
   try {
     const ajv = new Ajv();
     addFormats(ajv);

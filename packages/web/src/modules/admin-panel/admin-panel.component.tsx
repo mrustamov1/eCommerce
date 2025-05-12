@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
 import { Button } from "../../ui-components/button/button.component";
+import { UserType } from "../../types/user.type";
+import { Input } from "../../ui-components/Input/input.component";
 
 type User = {
   id: number;
@@ -11,6 +13,7 @@ type User = {
 
 export function Admin() {
   const [users, setUsers] = useState<User[]>([]);
+  const [edituser, setEditUser] = useState<User | null>(null);
 
   useEffect(() => {
     const fetchUsers = async () => {
@@ -25,6 +28,7 @@ export function Admin() {
 
     fetchUsers();
   }, []);
+
   const handleDelete = async (userId: number) => {
     try {
       const response = await fetch("http://localhost:9090/api/user/delete", {
@@ -46,6 +50,33 @@ export function Admin() {
       alert("Error deleting user.");
     }
   };
+
+  const handleEdit = async () => {
+    if (!edituser) return;
+    try {
+      const response = await fetch("http://localhost:9090/api/user/edit", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(edituser),
+      });
+
+      const res = await response.json();
+
+      setUsers((prev) => prev.map((u) => (u.id === res.id ? res : u)));
+      setEditUser(null);
+      console.log("User updated successfully", res);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const handleInputChange = (field: keyof UserType, value: string) => {
+    if (!edituser) return;
+    setEditUser({ ...edituser, [field]: value });
+  };
+
   const showBorders = users.length > 1;
 
   return (
@@ -76,7 +107,11 @@ export function Admin() {
                   <td className="px-4 py-3">{user.email}</td>
                   <td className="px-4 py-3">{user.role}</td>
                   <td className="px-4 py-3 space-x-2">
-                    <Button title="Edit" mode="edit" />
+                    <Button
+                      onClick={() => setEditUser(user)}
+                      title="Edit"
+                      mode="edit"
+                    />
                     <Button
                       title="Delete"
                       mode="danger"
@@ -87,6 +122,43 @@ export function Admin() {
               ))}
             </tbody>
           </table>
+          {edituser && (
+            <div>
+              <Input
+                type="text"
+                value={edituser?.name || ""}
+                onChange={(e) =>
+                  setEditUser((prev) =>
+                    prev ? { ...prev, name: e.target.value } : prev
+                  )
+                }
+              />
+              <Input
+                type="text"
+                value={edituser.surname || ""}
+                onChange={(e) => {
+                  setEditUser((prev) =>
+                    prev ? { ...prev, surname: e.target.value } : prev
+                  );
+                }}
+              />
+              <Input
+                type="email"
+                value={edituser.email || ""}
+                onChange={(e) => {
+                  setEditUser((prev) =>
+                    prev ? { ...prev, email: e.target.value } : prev
+                  );
+                }}
+              />
+              <Button title="Save Changes" mode="edit" onClick={handleEdit} />
+              <Button
+                title="Cancel"
+                mode="danger"
+                onClick={() => setEditUser(null)}
+              />
+            </div>
+          )}
         </div>
       </section>
     </div>

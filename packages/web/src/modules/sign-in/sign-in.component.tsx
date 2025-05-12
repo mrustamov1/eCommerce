@@ -31,7 +31,7 @@ export function SignIn() {
         return false;
       }
 
-      const res = response.json();
+      const res = await response.json();
       console.log(res);
       navigate("/");
     } catch (error) {
