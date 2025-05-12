@@ -7,8 +7,14 @@ import { Button } from "../../ui-components/button/button.component";
 import { UserLoginSchema, UserLoginType } from "../../types/auth.type";
 
 export function SignIn() {
+  // ---------------------------------------------------------------------------
+  // variables
+  // ---------------------------------------------------------------------------
   const navigate = useNavigate();
 
+  // ---------------------------------------------------------------------------
+  // functions
+  // ---------------------------------------------------------------------------
   const {
     register,
     handleSubmit,
@@ -38,6 +44,7 @@ export function SignIn() {
       console.log(error);
     }
   };
+
   // ---------------------------------------------------------------------------
   return (
     <section className="flex justify-between h-[100vh]">

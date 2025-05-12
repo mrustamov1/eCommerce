@@ -1,6 +1,10 @@
-export type CategoriesType = {
-  id: string;
-  model: string;
-  description: string;
-  photo: string;
-};
+import { z } from "zod";
+
+export const CategoriesSchema = z.object({
+  id: z.string(),
+  model: z.string(),
+  description: z.string(),
+  photo: z.string(),
+});
+
+export type CategoriesType = z.infer<typeof CategoriesSchema>;

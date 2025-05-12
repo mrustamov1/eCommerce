@@ -7,7 +7,14 @@ import { Button } from "../../ui-components/button/button.component";
 import { UserRegisterSchema, UserRegisterType } from "../../types/auth.type";
 
 export function SignUp() {
+  // ---------------------------------------------------------------------------
+  // variables
+  // ---------------------------------------------------------------------------
   const navigate = useNavigate();
+
+  // ---------------------------------------------------------------------------
+  // functions
+  // ---------------------------------------------------------------------------
   const {
     register,
     handleSubmit,

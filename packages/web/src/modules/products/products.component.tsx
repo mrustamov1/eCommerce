@@ -1,13 +1,19 @@
 import { useNavigate } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 import { Header } from "../header/header.component";
-import { ProductTypes } from "../../types/product.type";
+import { ProductType } from "../../types/product.type";
 import { Input } from "../../ui-components/Input/input.component";
 import { Button } from "../../ui-components/button/button.component";
 
 export function Products() {
+  // ---------------------------------------------------------------------------
+  // variables
+  // ---------------------------------------------------------------------------
   const navigate = useNavigate();
 
+  // ---------------------------------------------------------------------------
+  // functions
+  // ---------------------------------------------------------------------------
   function handleID(id: number) {
     navigate(`/products/${id.toString()}`);
   }
@@ -23,8 +29,12 @@ export function Products() {
     queryKey: ["products"],
   });
 
+  // ---------------------------------------------------------------------------
   return (
     <>
+      {/* --------------------------------------------------------------------------- */}
+      {/* HEADER */}
+      {/* --------------------------------------------------------------------------- */}
       <Header />
       <section className="p-[30px]">
         <div className="flex justify-between items-center">
@@ -34,8 +44,11 @@ export function Products() {
             <Button title="Search" mode="login" className="rounded-[10px]" />
           </div>
         </div>
+        {/* --------------------------------------------------------------------------- */}
+        {/* DATA MAP */}
+        {/* --------------------------------------------------------------------------- */}
         <div className="grid grid-cols-4 gap-5 perspective-[1000px] pt-12">
-          {query.data?.map((product: ProductTypes) => (
+          {query.data?.map((product: ProductType) => (
             <article
               onClick={() => handleID(product.id)}
               key={product.id}
@@ -51,6 +64,9 @@ export function Products() {
                 src={product.photo}
                 alt="Product Photo"
               />
+              {/* --------------------------------------------------------------------------- */}
+              {/* PRODUCTCOLORS MAP */}
+              {/* --------------------------------------------------------------------------- */}
               <div className="flex justify-center gap-2 pt-8">
                 {product.colors?.map((color, index) => (
                   <span

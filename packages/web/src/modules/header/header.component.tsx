@@ -1,19 +1,24 @@
-import { useNavigate } from "react-router-dom";
-import { Images } from "../../assets/image";
-import { Button } from "../../ui-components/button/button.component";
 import { useState } from "react";
+import { Images } from "../../assets/image";
+import { useNavigate } from "react-router-dom";
+import { Button } from "../../ui-components/button/button.component";
 import { useAuthorization } from "../../context/authorization.context";
 
 export function Header() {
   // ---------------------------------------------------------------------------
   // variables
   // ---------------------------------------------------------------------------
+
   const navigate = useNavigate();
   const { user, logout } = useAuthorization();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const toggleMenu = () => {
+
+  // ---------------------------------------------------------------------------
+  // functions
+  // ---------------------------------------------------------------------------s
+  function toggleMenu() {
     setIsMenuOpen((prevState) => !prevState);
-  };
+  }
 
   // ---------------------------------------------------------------------------
   return (
@@ -29,6 +34,9 @@ export function Header() {
         <li>Support</li>
       </ul>
 
+      {/* --------------------------------------------------------------------------- */}
+      {/* MNEU OPEN */}
+      {/* --------------------------------------------------------------------------- */}
       {isMenuOpen && (
         <div className="absolute top-[60px] left-0 right-0 bg-white z-40 shadow-lg">
           <ul className="flex flex-col gap-5 text-[20px] font-bold p-5">
@@ -37,6 +45,10 @@ export function Header() {
           </ul>
         </div>
       )}
+
+      {/* --------------------------------------------------------------------------- */}
+      {/* CHECK WHEaTHER USER EXIST OR NOT */}
+      {/* --------------------------------------------------------------------------- */}
       {user ? (
         <div className="relative inline-block group">
           <img

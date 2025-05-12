@@ -1,11 +1,11 @@
 import bcrypt from "bcrypt";
 import { Request, Response } from "express";
 import { AuthSchema } from "../schema/auth.schema.js";
-import { UserEntity } from "../entities/user.entity.js";
 import { SchemaUtils } from "../utils/schema.utile.js";
+import { UserEntity } from "../entities/user.entity.js";
 import { UserKind, UserType } from "../types/user.type.js";
-import { LoginModel, RegistrationModel } from "../models/auth.model.js";
 import { DataSourceUtils } from "../utils/data-source.utile.js";
+import { LoginModel, RegistrationModel } from "../models/auth.model.js";
 
 export const AuthorizationController = {
   async register(

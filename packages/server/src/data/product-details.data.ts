@@ -1,6 +1,6 @@
 import { ProductDeatilsModel } from "../models/product-datails.model";
 
-export const data: ProductDeatilsModel[] = [
+export const productDetailsData: ProductDeatilsModel[] = [
   {
     id: 1,
     images: [

@@ -1,4 +1,4 @@
-export const products = [
+export const categoriesData = [
   {
     id: 1,
     model: "Register Your Beats",

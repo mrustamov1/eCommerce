@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 import video from "../../assets/videos/video.mp4";
-import { ProductTypes } from "../../types/product.type";
+import { ProductType } from "../../types/product.type";
 import { Button } from "../../ui-components/button/button.component";
 
 export function PopularProducts() {
@@ -35,7 +35,7 @@ export function PopularProducts() {
       <h1 className="text-[2.5rem] font-bold">Popular Now</h1>
       <div className="w-full max-w-[1200px] mx-auto pt-16 max-md:max-w-full p-4">
         <div className="flex gap-5 overflow-x-auto md:overflow-x-visible scroll-smooth scrollbar-hidden">
-          {query.data?.slice(0, 3).map((product: ProductTypes) => (
+          {query.data?.slice(0, 3).map((product: ProductType) => (
             <article
               onClick={() => handleID(product.id)}
               key={product.id}

@@ -7,6 +7,7 @@ import { AuthorizationController } from "./controllers/authorization.controller.
 import { ProductsController } from "./controllers/products.controller.js";
 import { ProductDetailsController } from "./controllers/product-details.controller.js";
 import { CategoriesController } from "./controllers/categories.controller.js";
+import { FaqController } from "./controllers/faq.controller.js";
 
 const server = express();
 
@@ -36,6 +37,7 @@ server.delete("/api/user/delete", UserController.delete);
 server.get("/products/get", ProductsController.get);
 server.get("/product/details/get/:id", ProductDetailsController.get);
 server.get("/categories/get", CategoriesController.get);
+server.get("/faq/get", FaqController.get);
 
 await AppDataSource.initialize();
 
