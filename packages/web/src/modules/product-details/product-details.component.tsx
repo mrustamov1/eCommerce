@@ -24,25 +24,27 @@ export function ProductDetails() {
     <>
       <Header />
       <div className="bg-[#fff]">
-        <section className="flex flex-col max-w-[1250px] w-full mx-auto">
-          <div className="flex pt-[50px] gap-5">
-            <div>
-              {products.images.map((item, index) => (
-                <div key={index}>
-                  <img
-                    className={`max-w-[100px] rounded-2xl mb-4 shadow-[2px_4px_12px_rgba(0,0,0,0.1)] cursor-pointer ${selectedImage === item ? "border-2 border-[#000]" : ""}`}
-                    src={item}
-                    onClick={() => setSelectedImage(item)}
-                    alt="Images"
-                  />
-                </div>
-              ))}
+        <section className="flex flex-col max-w-[1250px] w-full mx-auto max-xl:px-4">
+          <div className="max-lg:flex-col flex pt-[50px] gap-5">
+            <div className="flex gap-5 max-md:flex-col-reverse">
+              <div className="max-md:flex gap-5 max-sm:gap-3">
+                {products.images.map((item, index) => (
+                  <div key={index}>
+                    <img
+                      className={`max-w-[100px] w-full rounded-2xl mb-4 shadow-[2px_4px_12px_rgba(0,0,0,0.1)] cursor-pointer ${selectedImage === item ? "border-2 border-[#000]" : ""}`}
+                      src={item}
+                      onClick={() => setSelectedImage(item)}
+                      alt="Images"
+                    />
+                  </div>
+                ))}
+              </div>
+              <img
+                className="max-w-[700px] w-full max-h-[565px] h-screen max-sm:max-h-[450px] rounded-2xl shadow-[2px_4px_12px_rgba(0,0,0,0.1)]"
+                src={selectedImage}
+                alt="Main Image"
+              />
             </div>
-            <img
-              className="max-w-[700px] w-full max-h-[565px] rounded-2xl shadow-[2px_4px_12px_rgba(0,0,0,0.1)]"
-              src={selectedImage}
-              alt="Main Image"
-            />
             <div className="flex flex-col pt-5">
               <span className="text-[40px] font-semibold leading-[1.2em]">
                 {products.title}

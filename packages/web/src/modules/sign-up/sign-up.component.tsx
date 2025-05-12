@@ -31,6 +31,16 @@ export function SignUp() {
       }
 
       const result = await response.json();
+
+      localStorage.setItem(
+        "currentUser",
+        JSON.stringify({
+          id: result.id,
+          name: result.name,
+          surname: result.surname,
+          email: result.email,
+        })
+      );
       console.log("Registered successfully:", result);
       navigate("/");
     } catch (error) {

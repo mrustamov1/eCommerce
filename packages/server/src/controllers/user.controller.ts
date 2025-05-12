@@ -1,7 +1,8 @@
 import { UserEntity } from "../entities/user.entity.js";
-import { UserKind } from "../types/user.type.js";
+import { UserKind, UserType } from "../types/user.type.js";
 import { DataSourceUtils } from "../utils/data-source.utile.js";
 import { Request, Response } from "express";
+import bcrypt from "bcrypt";
 
 export const UserController = {
   async list(req: Request, res: Response) {
@@ -27,5 +28,29 @@ export const UserController = {
       console.error("Delete error:", error);
       res.status(500).send({ error: "Failed to delete user" });
     }
-  }
+  },
+
+  async edit(req: Request, res: Response) {
+    const { id, name, surname, email } = req.body;
+    try {
+      const oldUser = await DataSourceUtils.findOneByOrFail(UserEntity, { id });
+
+      oldUser.name = name;
+      oldUser.surname = surname;
+      oldUser.email = email;
+
+      const updateUser = await DataSourceUtils.update<UserType>(UserEntity, oldUser);
+      console.log("User successfully updated!");
+      res.status(200).send({
+        id: updateUser.id,
+        name: updateUser.name,
+        surname: updateUser.surname,
+        email: updateUser.email,
+        role: updateUser.role,
+      });
+    } catch (error) {
+      const errorMsg = `Error editing user with id ${id}`;
+      res.status(500).send({ error: errorMsg });
+    }
+  },
 };

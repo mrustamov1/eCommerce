@@ -2,12 +2,14 @@ import { useNavigate } from "react-router-dom";
 import { Images } from "../../assets/image";
 import { Button } from "../../ui-components/button/button.component";
 import { useState } from "react";
+import { useAuthorization } from "../../context/authorization.context";
 
 export function Header() {
   // ---------------------------------------------------------------------------
   // variables
   // ---------------------------------------------------------------------------
   const navigate = useNavigate();
+  const { user, logout } = useAuthorization();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const toggleMenu = () => {
     setIsMenuOpen((prevState) => !prevState);
@@ -35,12 +37,34 @@ export function Header() {
           </ul>
         </div>
       )}
+      {user ? (
+        <div className="relative inline-block group">
+          <img
+            className="w-[45px] h-[45px] rounded-full cursor-pointer"
+            src={Images.userProfile}
+            alt="Profile"
+          />
 
-      <Button
-        title="Sign In"
-        mode="simple"
-        onClick={() => navigate("/sign-in")}
-      />
+          <div className="absolute right-0 w-50 hidden mt-1 bg-white border rounded-lg shadow-lg group-hover:block cursor-pointer">
+            <span className="flex items-center gap-2 w-full px-4 py-2 text-gray-800 hover:bg-gray-200 rounded-lg">
+              <i className="fa-light fa-user"></i>
+              Change password
+            </span>
+            <span
+              className="flex items-center gap-2 px-4 py-2 text-gray-800 hover:bg-gray-200 rounded-lg"
+              onClick={logout}
+            >
+              <i className="fa-light fa-arrow-right-from-bracket"></i> Log out
+            </span>
+          </div>
+        </div>
+      ) : (
+        <Button
+          title="Sign In"
+          mode="simple"
+          onClick={() => navigate("/sign-in")}
+        />
+      )}
     </header>
   );
 }

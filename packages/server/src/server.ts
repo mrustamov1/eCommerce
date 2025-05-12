@@ -26,6 +26,7 @@ server.post("/api/auth/login", AuthorizationController.login);
 server.post("/api/auth/register", AuthorizationController.register);
 
 server.get("/api/user/get", UserController.list);
+server.post("/api/user/edit", UserController.edit);
 server.delete("/api/user/delete", UserController.delete);
 
 await AppDataSource.initialize();

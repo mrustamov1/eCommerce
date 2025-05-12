@@ -3,9 +3,15 @@ import { Button } from "../../ui-components/button/button.component";
 import { Input } from "../../ui-components/Input/input.component";
 import { Header } from "../header/header.component";
 import { products } from "../popular-products/data";
+import { useState } from "react";
 
 export function Products() {
   const navigate = useNavigate();
+  const [search, setSearch] = useState("")
+
+  const handleSearch = () => {
+    const searchData = products.filter((item) => item.model.toLowerCase().includes(search.toLowerCase()))
+  }
   function handleID(id: number) {
     navigate(`/products/${id.toString()}`);
   }
