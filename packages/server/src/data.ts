@@ -5,7 +5,7 @@ export const products = [
     model: "PowerBeats Pro 2",
     price: "$249.99",
     photo:
-      "https://res.cloudinary.com/dqnoa1wxt/image/upload/airpod2_eu1yip?_a=BAMClqcc0",
+      "https://res.cloudinary.com/dqnoa1wxt/image/upload/airpods_ecci7w?_a=BAMClqcc0",
     colors: ["#233142", "#455d7a", "#f95959", "#e3e3e3"],
   },
   {
@@ -14,7 +14,7 @@ export const products = [
     model: "PowerBeats Pro 2",
     price: "$249.99",
     photo:
-      "https://res.cloudinary.com/dqnoa1wxt/image/upload/airpods_ecci7w?_a=BAMClqcc0",
+      "https://res.cloudinary.com/dqnoa1wxt/image/upload/airpod2_eu1yip?_a=BAMClqcc0",
     colors: ["#a2a8d3", "#38598b", "#e7eaf6", "#113f67"],
   },
   {
