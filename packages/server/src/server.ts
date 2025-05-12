@@ -5,6 +5,7 @@ import { AppDataSource } from "./setup.js";
 import { UserController } from "./controllers/user.controller.js";
 import { AuthorizationController } from "./controllers/authorization.controller.js";
 import { ProductsController } from "./controllers/products.controller.js";
+import { ProductDetailsController } from "./controllers/product-details.controller.js";
 
 const server = express();
 
@@ -31,7 +32,8 @@ server.get("/api/user/get", UserController.list);
 server.post("/api/user/edit", UserController.edit);
 server.delete("/api/user/delete", UserController.delete);
 
-server.get("/products", ProductsController.get);
+server.get("/products/get", ProductsController.get);
+server.get("/product/details/get/:id", ProductDetailsController.get);
 
 await AppDataSource.initialize();
 
