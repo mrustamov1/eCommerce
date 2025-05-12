@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import { Button } from "../../ui-components/button/button.component";
-import { UserType } from "../../types/user.type";
 import { Input } from "../../ui-components/Input/input.component";
 
 type User = {
@@ -70,11 +69,6 @@ export function Admin() {
     } catch (error) {
       console.log(error);
     }
-  };
-
-  const handleInputChange = (field: keyof UserType, value: string) => {
-    if (!edituser) return;
-    setEditUser({ ...edituser, [field]: value });
   };
 
   const showBorders = users.length > 1;

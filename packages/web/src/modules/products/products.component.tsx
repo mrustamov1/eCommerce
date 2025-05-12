@@ -1,20 +1,28 @@
 import { useNavigate } from "react-router-dom";
-import { Button } from "../../ui-components/button/button.component";
-import { Input } from "../../ui-components/Input/input.component";
+import { useQuery } from "@tanstack/react-query";
 import { Header } from "../header/header.component";
-import { products } from "../popular-products/data";
-import { useState } from "react";
+import { ProductTypes } from "../../types/product.type";
+import { Input } from "../../ui-components/Input/input.component";
+import { Button } from "../../ui-components/button/button.component";
 
 export function Products() {
   const navigate = useNavigate();
-  const [search, setSearch] = useState("")
 
-  const handleSearch = () => {
-    const searchData = products.filter((item) => item.model.toLowerCase().includes(search.toLowerCase()))
-  }
   function handleID(id: number) {
     navigate(`/products/${id.toString()}`);
   }
+
+  async function fetchProducts() {
+    const response = await fetch("http://localhost:9090/products");
+    const res = await response.json();
+    return res;
+  }
+
+  const query = useQuery({
+    queryFn: () => fetchProducts(),
+    queryKey: ["products"],
+  });
+
   return (
     <>
       <Header />
@@ -26,35 +34,35 @@ export function Products() {
             <Button title="Search" mode="login" className="rounded-[10px]" />
           </div>
         </div>
-          <div className="grid grid-cols-4 gap-5 perspective-[1000px] pt-12">
-            {products.map((product) => (
-              <article
-                onClick={() => handleID(product.id)}
-                key={product.id}
-                className="cursor-pointer bg-[#fff] p-[1.875rem] rounded-2xl flex flex-col leading-8 flex-1 shadow-[2px_4px_12px_rgba(0,0,0,0.1)] transition-transform duration-300 hover:scale-[1.02]"
-              >
-                <span className="text-[#e31837] font-bold">
-                  {product.version}
-                </span>
-                <span className="font-bold text-[32px]">{product.model}</span>
-                <span className="font-bold">{product.price}</span>
-                <img
-                  className="max-h-[295px] my-auto"
-                  src={product.photo}
-                  alt="Product Photo"
-                />
-                <div className="flex justify-center gap-2 pt-8">
-                  {product.colors?.map((color, index) => (
-                    <span
-                      key={index}
-                      className="w-[1.25rem] h-[1.25rem] rounded-full"
-                      style={{ backgroundColor: color }}
-                    />
-                  ))}
-                </div>
-              </article>
-            ))}
-          </div>
+        <div className="grid grid-cols-4 gap-5 perspective-[1000px] pt-12">
+          {query.data?.map((product: ProductTypes) => (
+            <article
+              onClick={() => handleID(product.id)}
+              key={product.id}
+              className="cursor-pointer bg-[#fff] p-[1.875rem] rounded-2xl flex flex-col leading-8 flex-1 shadow-[2px_4px_12px_rgba(0,0,0,0.1)] transition-transform duration-300 hover:scale-[1.02]"
+            >
+              <span className="text-[#e31837] font-bold">
+                {product.version}
+              </span>
+              <span className="font-bold text-[32px]">{product.model}</span>
+              <span className="font-bold">{product.price}</span>
+              <img
+                className="max-h-[295px] my-auto"
+                src={product.photo}
+                alt="Product Photo"
+              />
+              <div className="flex justify-center gap-2 pt-8">
+                {product.colors?.map((color, index) => (
+                  <span
+                    key={index}
+                    className="w-[1.25rem] h-[1.25rem] rounded-full"
+                    style={{ backgroundColor: color }}
+                  />
+                ))}
+              </div>
+            </article>
+          ))}
+        </div>
       </section>
     </>
   );

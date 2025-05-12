@@ -19,3 +19,13 @@ export const ProductSchema = z.object({
 });
 
 export type ProductType = z.infer<typeof ProductSchema>;
+
+
+export type ProductTypes = {
+  id: number,
+  version: string,
+  model: string,
+  photo: string
+  price: string
+  colors: []
+} 

@@ -1,11 +1,11 @@
-import { Images } from "../../assets/image";
 export const products = [
   {
     id: 1,
     version: "NEW",
     model: "PowerBeats Pro 2",
     price: "$249.99",
-    photo: `${Images.airpod}`,
+    photo:
+      "https://res.cloudinary.com/dqnoa1wxt/image/upload/airpod2_eu1yip?_a=BAMClqcc0",
     colors: ["#233142", "#455d7a", "#f95959", "#e3e3e3"],
   },
   {
@@ -13,7 +13,8 @@ export const products = [
     version: "NEW",
     model: "PowerBeats Pro 2",
     price: "$249.99",
-    photo: `${Images.airpod2}`,
+    photo:
+      "https://res.cloudinary.com/dqnoa1wxt/image/upload/airpods_ecci7w?_a=BAMClqcc0",
     colors: ["#a2a8d3", "#38598b", "#e7eaf6", "#113f67"],
   },
   {
@@ -21,7 +22,8 @@ export const products = [
     version: "NEW",
     model: "PowerBeats Pro 2",
     price: "$249.99",
-    photo: `${Images.airpod3}`,
+    photo:
+      "https://res.cloudinary.com/dqnoa1wxt/image/upload/airpod3_oh25oe?_a=BAMClqcc0",
     colors: ["#596e79", "#f76b8a", "#000"],
   },
   {
@@ -29,15 +31,17 @@ export const products = [
     version: "NEW",
     model: "PowerBeats Pro 2",
     price: "$249.99",
-    photo: `${Images.airpod3}`,
-    colors: ["#596e79", "#f76b8a", "#000"],
+    photo:
+      "https://res.cloudinary.com/dqnoa1wxt/image/upload/airpods_ecci7w?_a=BAMClqcc0",
+    colors: ["#a2a8d3", "#38598b", "#e7eaf6", "#113f67"],
   },
   {
     id: 5,
     version: "NEW",
     model: "PowerBeats Pro 2",
     price: "$249.99",
-    photo: `${Images.airpod}`,
+    photo:
+      "https://res.cloudinary.com/dqnoa1wxt/image/upload/airpod2_eu1yip?_a=BAMClqcc0",
     colors: ["#233142", "#455d7a", "#f95959", "#e3e3e3"],
   },
   {
@@ -45,7 +49,8 @@ export const products = [
     version: "NEW",
     model: "PowerBeats Pro 2",
     price: "$249.99",
-    photo: `${Images.airpod2}`,
+    photo:
+      "https://res.cloudinary.com/dqnoa1wxt/image/upload/airpods_ecci7w?_a=BAMClqcc0",
     colors: ["#a2a8d3", "#38598b", "#e7eaf6", "#113f67"],
   },
   {
@@ -53,7 +58,8 @@ export const products = [
     version: "NEW",
     model: "PowerBeats Pro 2",
     price: "$249.99",
-    photo: `${Images.airpod3}`,
+    photo:
+      "https://res.cloudinary.com/dqnoa1wxt/image/upload/airpod3_oh25oe?_a=BAMClqcc0",
     colors: ["#596e79", "#f76b8a", "#000"],
   },
   {
@@ -61,15 +67,17 @@ export const products = [
     version: "NEW",
     model: "PowerBeats Pro 2",
     price: "$249.99",
-    photo: `${Images.airpod3}`,
-    colors: ["#596e79", "#f76b8a", "#000"],
+    photo:
+      "https://res.cloudinary.com/dqnoa1wxt/image/upload/airpods_ecci7w?_a=BAMClqcc0",
+    colors: ["#a2a8d3", "#38598b", "#e7eaf6", "#113f67"],
   },
   {
     id: 9,
     version: "NEW",
     model: "PowerBeats Pro 2",
     price: "$249.99",
-    photo: `${Images.airpod}`,
+    photo:
+      "https://res.cloudinary.com/dqnoa1wxt/image/upload/airpod2_eu1yip?_a=BAMClqcc0",
     colors: ["#233142", "#455d7a", "#f95959", "#e3e3e3"],
   },
   {
@@ -77,7 +85,8 @@ export const products = [
     version: "NEW",
     model: "PowerBeats Pro 2",
     price: "$249.99",
-    photo: `${Images.airpod2}`,
+    photo:
+      "https://res.cloudinary.com/dqnoa1wxt/image/upload/airpods_ecci7w?_a=BAMClqcc0",
     colors: ["#a2a8d3", "#38598b", "#e7eaf6", "#113f67"],
   },
   {
@@ -85,7 +94,8 @@ export const products = [
     version: "NEW",
     model: "PowerBeats Pro 2",
     price: "$249.99",
-    photo: `${Images.airpod3}`,
+    photo:
+      "https://res.cloudinary.com/dqnoa1wxt/image/upload/airpod3_oh25oe?_a=BAMClqcc0",
     colors: ["#596e79", "#f76b8a", "#000"],
   },
   {
@@ -93,7 +103,8 @@ export const products = [
     version: "NEW",
     model: "PowerBeats Pro 2",
     price: "$249.99",
-    photo: `${Images.airpod3}`,
-    colors: ["#596e79", "#f76b8a", "#000"],
+    photo:
+      "https://res.cloudinary.com/dqnoa1wxt/image/upload/airpods_ecci7w?_a=BAMClqcc0",
+    colors: ["#a2a8d3", "#38598b", "#e7eaf6", "#113f67"],
   },
 ];
