@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { data } from "../product-details.data.js";
+import { data } from "../data/product-details.data.js";
 import { ProductDeatilsModel } from "../models/product-datails.model.js";
 
 export const ProductDetailsController = {

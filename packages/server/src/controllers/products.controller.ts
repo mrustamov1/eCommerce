@@ -1,4 +1,4 @@
-import { products } from "../data.js";
+import { products } from "../data/product.data.js";
 import { ProductModel } from "../models/product.model.js";
 import { Request, Response } from "express";
 
