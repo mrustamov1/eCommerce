@@ -16,9 +16,15 @@ const newImages = [
 //   "head3_isctux",
 //   "head1_wa4sfa",
 //   "head2_po5rtf",
-"package_ozuula",
-"pickup_qizsod",
-"apple-music_t5rr0d"
+// "package_ozuula",
+// "pickup_qizsod",
+// "apple-music_t5rr0d"
+"product1_kojlmm",
+"product2_tthlux",
+"product3_llds1o",
+"product4_moxthd",
+"product5_qrm98s"
+
 ];
 
 cloudinary.config({

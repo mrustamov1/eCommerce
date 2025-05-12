@@ -1,4 +1,4 @@
-import { ProductDeatilsModel } from "./models/product-datails.model";
+import { ProductDeatilsModel } from "../models/product-datails.model";
 
 export const data: ProductDeatilsModel[] = [
   {

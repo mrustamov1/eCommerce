@@ -22,7 +22,7 @@ export function ProductDetails() {
   }
 
   const { data } = useQuery({
-    queryFn: () => fetchProductDetails(id),
+    queryFn: () => (id ? fetchProductDetails(id) : Promise.resolve(null)),
     queryKey: ["product-details", id],
     enabled: !!id,
   });

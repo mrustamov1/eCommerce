@@ -1,43 +1,21 @@
-import { Images } from "../../assets/image";
+import { useQuery } from "@tanstack/react-query";
+import { CategoriesType } from "../../types/categories.type";
 
 export function Categories() {
   // ---------------------------------------------------------------------------
-  // data
+  // functions
   // ---------------------------------------------------------------------------
-  const products = [
-    {
-      id: 1,
-      model: "Register Your Beats",
-      description:
-        "Get the most out of your Beats with latest software updates and more.",
-      photo: `${Images.product1}`,
-    },
-    {
-      id: 2,
-      model: "Collaborations",
-      description: "Explore one-of-a-kind, limited-edition product collabs.",
-      photo: `${Images.product2}`,
-    },
-    {
-      id: 3,
-      model: "Find Your Beats",
-      description:
-        "If your Beats are missing, track them down with the ‘Find My’ app.",
-      photo: `${Images.product3}`,
-    },
-    {
-      id: 4,
-      model: "Beats App for Android",
-      description: "Download the Beats app to unlock additional features.",
-      photo: `${Images.product4}`,
-    },
-    {
-      id: 5,
-      model: "Free Apple Music",
-      description: "Enjoy 3 months of Apple Music free with select Beats.",
-      photo: `${Images.product5}`,
-    },
-  ];
+
+  async function fetchCategories() {
+    const response = await fetch("http://localhost:9090/categories/get");
+    const res = response.json();
+    return res;
+  }
+
+  const { data } = useQuery({
+    queryFn: () => fetchCategories(),
+    queryKey: ["categories"],
+  });
 
   // ---------------------------------------------------------------------------
   return (
@@ -50,7 +28,7 @@ export function Categories() {
       </div>
       <section className="w-full overflow-x-scroll overflow-y-hidden flex justify-center pb-[60px] scrollbar-hidden">
         <div className="flex gap-5 w-max perspective-[1000px]">
-          {products.map((product) => (
+          {data?.map((product: CategoriesType) => (
             <article
               key={product.id}
               className=" w-[333px] cursor-pointer bg-[#fff] p-[1.875rem] rounded-2xl flex flex-col leading-8 shadow-[2px_4px_12px_rgba(0,0,0,0.1)] transition-transform duration-300 hover:scale-[1.02]"
