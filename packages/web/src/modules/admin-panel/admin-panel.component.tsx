@@ -1,34 +1,34 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
+import { useQuery } from "@tanstack/react-query";
+import { AdminType } from "../../types/admin.type";
 import { Button } from "../../ui-components/button/button.component";
-import { Input } from "../../ui-components/Input/input.component";
-
-type User = {
-  id: number;
-  name: string;
-  surname: string;
-  email: string;
-  role: string;
-};
+import { useModal } from "../../ui-components/modal";
+import { AdminEditUser } from "./admin-edit-user.component";
 
 export function Admin() {
-  const [users, setUsers] = useState<User[]>([]);
-  const [edituser, setEditUser] = useState<User | null>(null);
+  // ---------------------------------------------------------------------------
+  // variables
+  // ---------------------------------------------------------------------------
 
-  useEffect(() => {
-    const fetchUsers = async () => {
-      try {
-        const response = await fetch("http://localhost:9090/api/user/get");
-        const data = await response.json();
-        setUsers(data);
-      } catch (error) {
-        console.error("Failed to fetch users:", error);
-      }
-    };
+  const [users, setUsers] = useState<AdminType[]>([]);
+  const modal = useModal();
 
-    fetchUsers();
-  }, []);
+  // ---------------------------------------------------------------------------
+  // functions
+  // ---------------------------------------------------------------------------
 
-  const handleDelete = async (userId: number) => {
+  async function getUser() {
+    const reponse = await fetch("http://localhost:9090/api/user/get");
+    const result = reponse.json();
+    return result;
+  }
+
+  const { data } = useQuery({
+    queryFn: () => getUser(),
+    queryKey: ["get-user"],
+  });
+
+  async function handleDelete(userId: number) {
     try {
       const response = await fetch("http://localhost:9090/api/user/delete", {
         method: "DELETE",
@@ -39,7 +39,7 @@ export function Admin() {
       });
 
       if (response.ok) {
-        setUsers(users.filter((user) => user.id !== userId)); // Remove the deleted user from the state
+        setUsers(users.filter((user) => user.id !== userId));
         alert(`User with id ${userId} deleted successfully.`);
       } else {
         alert("Failed to delete user.");
@@ -48,28 +48,15 @@ export function Admin() {
       console.error("Error deleting user:", error);
       alert("Error deleting user.");
     }
-  };
+  }
 
-  const handleEdit = async () => {
-    if (!edituser) return;
-    try {
-      const response = await fetch("http://localhost:9090/api/user/edit", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(edituser),
-      });
-
-      const res = await response.json();
-
-      setUsers((prev) => prev.map((u) => (u.id === res.id ? res : u)));
-      setEditUser(null);
-      console.log("User updated successfully", res);
-    } catch (error) {
-      console.log(error);
-    }
-  };
+  function editUser(user: AdminType) {
+    modal.open({
+      component: <AdminEditUser user={user} />,
+      hideCloseBtn: true,
+      closeOnOutsideClick: true,
+    });
+  }
 
   const showBorders = users.length > 1;
 
@@ -93,7 +80,7 @@ export function Admin() {
               </tr>
             </thead>
             <tbody className={`${showBorders ? "divide-y divide-black" : ""}`}>
-              {users.map((user, index) => (
+              {data?.map((user: AdminType, index: number) => (
                 <tr key={user.id} className="hover:bg-gray-50 transition">
                   <td className="px-4 py-3">{index + 1}</td>
                   <td className="px-4 py-3">{user.name}</td>
@@ -102,10 +89,11 @@ export function Admin() {
                   <td className="px-4 py-3">{user.role}</td>
                   <td className="px-4 py-3 space-x-2">
                     <Button
-                      onClick={() => setEditUser(user)}
+                      onClick={() => editUser(user)}
                       title="Edit"
                       mode="edit"
                     />
+
                     <Button
                       title="Delete"
                       mode="danger"
@@ -116,43 +104,6 @@ export function Admin() {
               ))}
             </tbody>
           </table>
-          {edituser && (
-            <div>
-              <Input
-                type="text"
-                value={edituser?.name || ""}
-                onChange={(e) =>
-                  setEditUser((prev) =>
-                    prev ? { ...prev, name: e.target.value } : prev
-                  )
-                }
-              />
-              <Input
-                type="text"
-                value={edituser.surname || ""}
-                onChange={(e) => {
-                  setEditUser((prev) =>
-                    prev ? { ...prev, surname: e.target.value } : prev
-                  );
-                }}
-              />
-              <Input
-                type="email"
-                value={edituser.email || ""}
-                onChange={(e) => {
-                  setEditUser((prev) =>
-                    prev ? { ...prev, email: e.target.value } : prev
-                  );
-                }}
-              />
-              <Button title="Save Changes" mode="edit" onClick={handleEdit} />
-              <Button
-                title="Cancel"
-                mode="danger"
-                onClick={() => setEditUser(null)}
-              />
-            </div>
-          )}
         </div>
       </section>
     </div>

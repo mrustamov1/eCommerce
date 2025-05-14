@@ -1,0 +1,104 @@
+.overlay {
+  position: fixed;
+  display: flex;
+  align-items: center;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 900;
+
+  background: rgba(4, 14, 23, 0.3);
+  backdrop-filter: blur(2px);
+  opacity: 0;
+  transition: all ease 0.5s;
+}
+
+.overlay.opened {
+  opacity: 1;
+  transition: opacity 0.3s ease 0s;
+}
+
+.overlay.closed {
+  transition:
+    opacity 0.3s ease 0s,
+    transform 0s ease 0.3s;
+  transform: translate3d(100%, 0px, 0px);
+}
+
+.modal {
+  /* padding: 2.6rem 5rem 3rem 5rem; */
+  z-index: 901;
+  background: var(--background_primary);
+  max-height: 95vh;
+  overflow: auto;
+  margin: 0 auto;
+  align-items: center;
+  position: relative;
+  border-radius: 1rem;
+  background: #fff;
+  box-shadow: 0px 2px 6px 2px rgba(39, 37, 39, 0.15);
+}
+
+.modal::-webkit-scrollbar {
+  display: none;
+}
+
+.title {
+  font-weight: 600;
+  font-size: 2.8rem;
+  line-height: 3.5rem;
+  color: var(--header_text);
+}
+
+.crossBtn {
+  width: 2.4rem;
+  height: 2.4rem;
+  flex-shrink: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.crossBtn:hover {
+  background-color: var(--outline_hover);
+}
+
+.crossBtn:hover i {
+  color: var(--secondary_text);
+}
+
+.crossBtn:active {
+  background: none;
+}
+
+.crossIcon {
+  font-size: 1.8rem;
+  color: #5b6c73;
+}
+
+.topWrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2rem 2rem 0 2rem;
+}
+
+.modalTitle {
+  color: var(--Typo-Primary, #0d3545);
+  font-family: "Noto Sans JP";
+  font-size: 1.7rem;
+  font-style: normal;
+  font-weight: 900;
+  line-height: 2.5rem;
+  padding-top: 2rem;
+  /* 147.059% */
+}
+
+@media (max-width: 550px) {
+  .modal {
+    overflow: scroll;
+  }
+}

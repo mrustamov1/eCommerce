@@ -1,4 +1,5 @@
 import { UserType } from "../types/user.type";
+
 export function useAccountUser(): UserType | null {
   const localUser = localStorage.getItem("currentUser");
   const localAdmin = localStorage.getItem("admin");
