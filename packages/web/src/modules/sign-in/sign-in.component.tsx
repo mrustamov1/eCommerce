@@ -5,10 +5,17 @@ import { SubmitHandler, useForm } from "react-hook-form";
 import { Input } from "../../ui-components/Input/input.component";
 import { Button } from "../../ui-components/button/button.component";
 import { UserLoginSchema, UserLoginType } from "../../types/auth.type";
+import { UserType } from "../../types/user.type";
 
 export function SignIn() {
+  // ---------------------------------------------------------------------------
+  // variables
+  // ---------------------------------------------------------------------------
   const navigate = useNavigate();
 
+  // ---------------------------------------------------------------------------
+  // functions
+  // ---------------------------------------------------------------------------
   const {
     register,
     handleSubmit,
@@ -30,19 +37,20 @@ export function SignIn() {
         console.log("Something went wrong in login");
         return false;
       }
+      const res: UserType = await response.json();
 
-      const res = await response.json();
       console.log(res);
       navigate("/");
     } catch (error) {
       console.log(error);
     }
   };
+
   // ---------------------------------------------------------------------------
   return (
     <section className="flex justify-between h-[100vh]">
       <div className="flex items-center flex-col justify-center w-[100%]">
-        <div className="shadow-[0px_19px_40px_0px_#0000000D] p-[61px] rounded-2xl my-10">
+        <div className="max-w-[550px] w-full shadow-[0px_19px_40px_0px_#0000000D] p-[61px] rounded-2xl my-10">
           <img
             className="w-[32px] h-[32px] mb-[40px]"
             src={Images.logo}
@@ -71,7 +79,7 @@ export function SignIn() {
             <div className="flex flex-col justify-center mt-8 gap-5 text-center">
               <Button type="submit" title="SIGN IN" mode="login" />
               <p>
-                I already have an account ?
+                I don't have an account ?
                 <a
                   className="text-[#F47458] cursor-pointer hover:underline"
                   onClick={() => navigate("/sign-up")}
@@ -84,10 +92,6 @@ export function SignIn() {
           </form>
         </div>
       </div>
-      {/* --------------------------------------------------------------------------- */}
-      {/* SIGN IN BACKGROUND IMAGE */}
-      {/* --------------------------------------------------------------------------- */}
-      <img src={Images.group} alt="Group" />
     </section>
   );
 }

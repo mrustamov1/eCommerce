@@ -1,8 +1,8 @@
 import { Request, Response } from "express";
-import { products } from "../data/categories.data.js";
+import { categoriesData } from "../data/categories.data.js";
 
 export const CategoriesController = {
   async get(req: Request, res: Response) {
-    res.send(products);
+    res.send(categoriesData);
   },
 };

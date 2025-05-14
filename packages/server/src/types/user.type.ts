@@ -1,20 +1,16 @@
-import { number, string, z } from "zod";
-
-export enum UserKind {
-  admin = "admin",
-  user = "user",
+export type UserType = {
+  id: string
+  created_at: number
+  updated_at: number
+  surname: string
+  name: string
+  email: string
+  password: string
+  role: UserKind
+  refreshToken: string | null
 }
 
-export const UserSchema = z.object({
-  id: string(),
-  name: string(),
-  surname: string(),
-  created_at: number(),
-  updated_at: number(),
-  email: string().email(),
-  password: string().min(8),
-  role: z.enum([UserKind.admin, UserKind.user]),
-  refreshToken: z.string().nullable(),
-});
-
-export type UserType = z.infer<typeof UserSchema>;
+export enum UserKind {
+  user = "user",
+  admin = "admin",
+}

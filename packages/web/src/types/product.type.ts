@@ -8,7 +8,7 @@ export const DeliveryInfoSchema = z.object({
 
 export type DeliveryInfoType = z.infer<typeof DeliveryInfoSchema>;
 
-export const ProductSchema = z.object({
+export const ProductDetailsSchema = z.object({
   id: z.number(),
   images: z.string().array(),
   title: z.string(),
@@ -18,14 +18,16 @@ export const ProductSchema = z.object({
   deliveryInfo: z.array(DeliveryInfoSchema),
 });
 
+export type ProductDetailsType = z.infer<typeof ProductDetailsSchema>;
+
+export const ProductSchema = z.object({
+  id: z.number(),
+  price: z.string(),
+  photo: z.string(),
+  model: z.string(),
+  version: z.string(),
+  description: z.string(),
+  colors: z.string().array(),
+});
+
 export type ProductType = z.infer<typeof ProductSchema>;
-
-
-export type ProductTypes = {
-  id: number,
-  version: string,
-  model: string,
-  photo: string
-  price: string
-  colors: []
-} 

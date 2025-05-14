@@ -1,32 +1,29 @@
-import { useNavigate } from "react-router-dom";
 import { Images } from "../../assets/image";
+import { useNavigate } from "react-router-dom";
+import { useQuery } from "@tanstack/react-query";
+import { FaqType } from "../../types/faq.type";
 import { Button } from "../../ui-components/button/button.component";
 
 export function FAQ() {
+  // ---------------------------------------------------------------------------
+  // variables
+  // ---------------------------------------------------------------------------
   const navigate = useNavigate();
+
   // ---------------------------------------------------------------------------
-  // data
+  // functions
   // ---------------------------------------------------------------------------
-  const data = [
-    {
-      id: 1,
-      photo: `${Images.box}`,
-      title: "Fast and Free Delivery",
-      description: "Enjoy free two-day delivery on most in-stock items.",
-    },
-    {
-      id: 2,
-      photo: `${Images.shoppingbeg}`,
-      title: "In-Store Pickup",
-      description: "Pick up your online order at an Apple Store near you.",
-    },
-    {
-      id: 3,
-      photo: `${Images.rotate}`,
-      title: "Easy Returns",
-      description: "Return eligible items to Apple within 14 days of receipt.",
-    },
-  ];
+
+  async function fetchFaq() {
+    const response = await fetch("http://localhost:9090/faq/get");
+    const res = await response.json();
+    return res;
+  }
+
+  const { data } = useQuery({
+    queryFn: () => fetchFaq(),
+    queryKey: ["faq"],
+  });
 
   // ---------------------------------------------------------------------------
   return (
@@ -37,7 +34,7 @@ export function FAQ() {
         </h1>
         <div className="w-full max-w-[1200px] mx-auto pt-16 gap-6 flex flex-col">
           <div className="flex justify-between gap-[3rem] max-md:flex-col">
-            {data.map((item) => (
+            {data?.map((item: FaqType) => (
               <div
                 key={item.id}
                 className="flex flex-col justify-center items-center text-center gap-2"

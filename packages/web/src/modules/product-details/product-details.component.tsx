@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 import { Header } from "../header/header.component";
-import { useParams } from "react-router-dom";
-import { Button } from "../../ui-components/button/button.component";
 import { DeliveryInfoType } from "../../types/product.type";
+import { Button } from "../../ui-components/button/button.component";
 
 export function ProductDetails() {
   // ---------------------------------------------------------------------------
@@ -11,6 +11,10 @@ export function ProductDetails() {
   // ---------------------------------------------------------------------------
   const { id } = useParams<{ id: string }>();
   const [selectedImage, setSelectedImage] = useState("");
+
+  // ---------------------------------------------------------------------------
+  // functions
+  // ---------------------------------------------------------------------------
 
   async function fetchProductDetails(id: string) {
     const response = await fetch(
@@ -27,6 +31,9 @@ export function ProductDetails() {
     enabled: !!id,
   });
 
+  // ---------------------------------------------------------------------------
+  // effects
+  // ---------------------------------------------------------------------------
   useEffect(() => {
     if (data?.images?.length > 0) {
       setSelectedImage(data.images[0]);
@@ -42,12 +49,18 @@ export function ProductDetails() {
   // ---------------------------------------------------------------------------
   return (
     <>
+      {/* --------------------------------------------------------------------------- */}
+      {/* HEADER */}
+      {/* --------------------------------------------------------------------------- */}
       <Header />
       <div className="bg-[#fff]">
         <section className="flex flex-col max-w-[1250px] w-full mx-auto max-xl:px-4">
           <div className="max-lg:flex-col flex pt-[50px] gap-5">
             <div className="flex gap-5 max-md:flex-col-reverse">
               <div className="max-md:flex gap-5 max-sm:gap-3">
+                {/* --------------------------------------------------------------------------- */}
+                {/* IMAGES MAP */}
+                {/* --------------------------------------------------------------------------- */}
                 {data.images?.map((item: string, index: number) => (
                   <div key={index}>
                     <img
@@ -82,6 +95,9 @@ export function ProductDetails() {
               </div>
               <Button title="ADD TO CARD" mode="dark" />
               <div className="border-y-[0.5px] border-y-gray-300 mt-10">
+                {/* --------------------------------------------------------------------------- */}
+                {/* DELIVERY INFO MAP */}
+                {/* --------------------------------------------------------------------------- */}
                 {data.deliveryInfo?.map(
                   (item: DeliveryInfoType, index: number) => (
                     <div key={index} className="flex gap-3 items-center my-5">

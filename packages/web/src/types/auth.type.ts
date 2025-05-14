@@ -1,5 +1,4 @@
 import { z } from "zod";
-// import { UserKindEnum } from "./user.type";
 
 export const UserRegisterSchema = z
   .object({
@@ -9,7 +8,6 @@ export const UserRegisterSchema = z
     email: z.string().email(),
     password: z.string().min(8),
     confirmPassword: z.string(),
-    // role: UserKindEnum,
   })
   .refine((data) => data.password === data.confirmPassword, {
     message: "Password do not matched",
