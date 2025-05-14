@@ -7,6 +7,7 @@ import React, {
 } from "react";
 import { useNavigate } from "react-router-dom";
 import { UserType } from "../types/user.type";
+import { TokenUtils } from "../utils/token.utils";
 
 type AuthorizationContextType = {
   login: (userData: UserType) => void;
@@ -35,6 +36,14 @@ export const AuthorizationProvider: React.FC<AuthorizationProviderProps> = ({
     const currentUser = localStorage.getItem("currentUser");
     if (currentUser) {
       setUser(JSON.parse(currentUser));
+    }
+  }, []);
+
+  useEffect(() => {
+    const token = TokenUtils.get();
+    if (!token) {
+      logout();
+      return;
     }
   }, []);
 

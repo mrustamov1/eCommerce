@@ -34,7 +34,7 @@ export function PopularProducts() {
     <section className="flex flex-col justify-center items-center py-[4.5rem]">
       <h1 className="text-[2.5rem] font-bold">Popular Now</h1>
       <div className="w-full max-w-[1200px] mx-auto pt-16 max-md:max-w-full p-4">
-        <div className="flex gap-5 overflow-x-auto md:overflow-x-visible scroll-smooth scrollbar-hidden">
+        <div className="flex gap-5 overflow-x-auto md:overflow-x-visible scroll-smooth scrollbar-hidden pb-10">
           {query.data?.slice(0, 3).map((product: ProductType) => (
             <article
               onClick={() => handleID(product.id)}

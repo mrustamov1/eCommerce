@@ -36,8 +36,22 @@ export function SignIn() {
         console.log("Something went wrong in login");
         return false;
       }
-
       const res = await response.json();
+      localStorage.setItem("accessToken", res.accessToken);
+      localStorage.setItem("refreshToken", res.refreshToken);
+
+      // 👉 Optionally store user data if needed
+      localStorage.setItem(
+        "user",
+        JSON.stringify({
+          id: res.id,
+          name: res.name,
+          surname: res.surname,
+          email: res.email,
+          role: res.role,
+        })
+      );
+
       console.log(res);
       navigate("/");
     } catch (error) {
@@ -91,10 +105,6 @@ export function SignIn() {
           </form>
         </div>
       </div>
-      {/* --------------------------------------------------------------------------- */}
-      {/* SIGN IN BACKGROUND IMAGE */}
-      {/* --------------------------------------------------------------------------- */}
-      <img src={Images.group} alt="Group" />
     </section>
   );
 }

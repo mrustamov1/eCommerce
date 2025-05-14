@@ -5,8 +5,8 @@ export function ProductComparison() {
   // ---------------------------------------------------------------------------
   return (
     <section className="relative flex flex-col items-center justify-center">
-      <div>
-        <img src={Images.compare} alt="Compare" className="max-md:h-screen object-cover"/>
+      <div className="w-full">
+        <img src={Images.compare} alt="Compare" className="max-md:h-screen object-cover w-full"/>
         <div className="absolute top-[12%] pl-[60px] max-sm:pl-[30px]">
           <div className="max-w-[550px] pb-[50px] max-xl:max-w-full max-md:pr-18">
             <h1 className="text-[clamp(2.5rem,5vw,4rem)] leading-tight pb-2 transition-all duration-300 ease-in-out">

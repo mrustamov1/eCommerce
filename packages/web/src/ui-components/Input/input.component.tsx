@@ -62,7 +62,7 @@ export function Input({
 
         <input
           className={clsx(
-            "min-w-[478px] w-full px-3 py-3 rounded-[10px] border-2 border-[#000]",
+            "max-w-[478px] w-full px-3 py-3 rounded-[10px] border-2 border-[#000]",
             className
           )}
           ref={inputRef}

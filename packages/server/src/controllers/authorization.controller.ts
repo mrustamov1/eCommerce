@@ -6,6 +6,7 @@ import { UserEntity } from "../entities/user.entity.js";
 import { UserKind, UserType } from "../types/user.type.js";
 import { DataSourceUtils } from "../utils/data-source.utile.js";
 import { LoginModel, RegistrationModel } from "../models/auth.model.js";
+import { TokenUtils } from "../utils/token.ustils.js";
 
 export const AuthorizationController = {
   async register(
@@ -46,19 +47,33 @@ export const AuthorizationController = {
         where: { email: req.body.email },
       });
 
-      if (
-        !user ||
-        !(await bcrypt.compare(req.body.password.trim(), user.password))
-      ) {
+      const isValid =
+        user && (await bcrypt.compare(req.body.password.trim(), user.password));
+
+      if (!isValid) {
         res.status(404).send("User not found");
         return;
-      } else {
-        console.log("Something went wrong");
       }
 
-      res.status(200).send({ id: user.id });
+      const tokens = TokenUtils.generate(user.id, user.role);
+
+      await DataSourceUtils.update<UserType>(UserEntity, {
+        id: user.id,
+        refreshToken: tokens.refresh,
+        updated_at: Date.now(),
+      });
+
+      res.status(200).send({
+        id: user.id,
+        name: user.name,
+        surname: user.surname,
+        email: user.email,
+        accessToken: tokens.access,
+        refreshToken: tokens.refresh,
+      });
     } catch (error) {
-      console.log(error);
+      console.error("Login error:", error);
+      res.status(500).send("Internal server error");
     }
   },
 };
