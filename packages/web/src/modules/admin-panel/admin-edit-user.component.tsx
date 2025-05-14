@@ -3,13 +3,22 @@ import { Input } from "../../ui-components/Input/input.component";
 import { AdminType } from "../../types/admin.type";
 import { Button } from "../../ui-components/button/button.component";
 import { useModal } from "../../ui-components/modal";
-interface AdminEditUserProps {
+
+type AdminEditUserProps = {
   user: AdminType;
-}
+};
 
 export function AdminEditUser({ user }: AdminEditUserProps) {
+  // ---------------------------------------------------------------------------
+  // variables
+  // ---------------------------------------------------------------------------
+
   const [edituser, setEditUser] = useState<AdminType>(user);
   const modal = useModal();
+
+  // ---------------------------------------------------------------------------
+  // functions
+  // ---------------------------------------------------------------------------
 
   async function handleEdit() {
     if (!edituser) return;
@@ -35,6 +44,7 @@ export function AdminEditUser({ user }: AdminEditUserProps) {
     }
   }
 
+  // ---------------------------------------------------------------------------
   return (
     <section className="p-5">
       <div className="gap-3 flex flex-col">
