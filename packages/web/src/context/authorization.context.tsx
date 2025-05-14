@@ -1,4 +1,11 @@
-import React, { useState, useEffect, useContext, createContext, ReactNode, useCallback } from "react";
+import React, {
+  useState,
+  useEffect,
+  useContext,
+  createContext,
+  ReactNode,
+  useCallback,
+} from "react";
 import { useNavigate } from "react-router-dom";
 import { UserKindEnum, UserType } from "../types/user.type";
 
@@ -20,33 +27,32 @@ type AuthorizationProviderProps = {
   children: ReactNode;
 };
 
-export const AuthorizationProvider: React.FC<AuthorizationProviderProps> = ({ children }) => {
+export const AuthorizationProvider: React.FC<AuthorizationProviderProps> = ({
+  children,
+}) => {
   const navigate = useNavigate();
   const [user, setUser] = useState<UserType | null>(null);
 
-  // Effect to check if user data exists in localStorage on component mount
   useEffect(() => {
     checkAuth();
   }, []);
 
-  // Function to check if user is authenticated
   const checkAuth = useCallback(() => {
     const currentUser = localStorage.getItem("currentUser");
     if (currentUser) {
-      setUser(JSON.parse(currentUser)); // Set the user from localStorage
+      setUser(JSON.parse(currentUser));
     }
   }, []);
 
-  // Login function to set user and store in localStorage
   function login(userData: UserType) {
-    UserKindEnum.parse(userData.role); // Validate user role (Optional, if you want to enforce specific roles)
+    UserKindEnum.parse(userData.role);
     setUser(userData);
     if (userData.role === "admin") {
       localStorage.setItem("admin", JSON.stringify(userData));
     } else {
       localStorage.setItem("currentUser", JSON.stringify(userData));
     }
-    localStorage.removeItem("currentUserId"); // Clear previous user ID if any
+    localStorage.removeItem("currentUserId");
   }
 
   // Set user ID function
@@ -67,7 +73,7 @@ export const AuthorizationProvider: React.FC<AuthorizationProviderProps> = ({ ch
     localStorage.removeItem("tokens");
     localStorage.removeItem("currentUser");
     localStorage.removeItem("admin");
-    navigate("/"); // Navigate to home page after logout
+    navigate("/");
   }, [navigate]);
 
   return (
@@ -80,7 +86,9 @@ export const AuthorizationProvider: React.FC<AuthorizationProviderProps> = ({ ch
 export const useAuthorization = (): AuthorizationContextType => {
   const context = useContext(AuthorizationContext);
   if (!context) {
-    throw new Error("useAuthorization must be used within an AuthorizationProvider");
+    throw new Error(
+      "useAuthorization must be used within an AuthorizationProvider"
+    );
   }
   return context;
 };
