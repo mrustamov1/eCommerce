@@ -4,12 +4,14 @@ import { Header } from "../header/header.component";
 import { ProductType } from "../../types/product.type";
 import { Input } from "../../ui-components/Input/input.component";
 import { Button } from "../../ui-components/button/button.component";
+import { useState } from "react";
 
 export function Products() {
   // ---------------------------------------------------------------------------
   // variables
   // ---------------------------------------------------------------------------
   const navigate = useNavigate();
+  const [search, setSearch] = useState(false);
 
   // ---------------------------------------------------------------------------
   // functions
@@ -29,6 +31,10 @@ export function Products() {
     queryKey: ["products"],
   });
 
+  function toggleSearch() {
+    setSearch((prev) => !prev);
+  }
+
   // ---------------------------------------------------------------------------
   return (
     <>
@@ -36,18 +42,28 @@ export function Products() {
       {/* HEADER */}
       {/* --------------------------------------------------------------------------- */}
       <Header />
-      <section className="p-[30px]">
-        <div className="flex justify-between items-center">
-          <h1 className="text-[3rem] font-semibold">Products</h1>
-          <div className="flex gap-2">
-            <Input type="search" placeholder="Search your desired product..." />
-            <Button title="Search" mode="login" className="rounded-[10px]" />
+      <section className="p-[30px] max-sm:px-[15px]">
+        <div className="flex justify-between items-center max-sm:gap-7">
+          <h1 className="text-[3rem] font-semibold max-md:text-[2rem]">
+            Products
+          </h1>
+          {search && (
+            <div className="flex gap-2">
+              <Input
+                type="search"
+                placeholder="Search your desired product..."
+              />
+              <Button title="Search" mode="login" className="rounded-[10px]" />
+            </div>
+          )}
+          <div onClick={toggleSearch} className="lg:hidden">
+            <i className="fa-regular fa-search"></i>
           </div>
         </div>
         {/* --------------------------------------------------------------------------- */}
         {/* DATA MAP */}
         {/* --------------------------------------------------------------------------- */}
-        <div className="grid grid-cols-4 gap-5 perspective-[1000px] pt-12">
+        <div className="grid grid-cols-4 gap-5 perspective-[1000px] pt-12 max-xl:grid max-xl:grid-cols-3 max-lg:grid max-lg:grid-cols-2 max-sm:grid max-sm:grid-cols-1">
           {query.data?.map((product: ProductType) => (
             <article
               onClick={() => handleID(product.id)}
@@ -57,7 +73,9 @@ export function Products() {
               <span className="text-[#e31837] font-bold">
                 {product.version}
               </span>
-              <span className="font-bold text-[32px]">{product.model}</span>
+              <span className="font-bold text-[32px] max-2xl:text-[26px]">
+                {product.model}
+              </span>
               <span className="font-bold">{product.price}</span>
               <img
                 className="max-h-[295px] my-auto"

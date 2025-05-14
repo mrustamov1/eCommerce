@@ -21,6 +21,16 @@ server.use(
   cors({
     origin: "http://localhost:3010",
     credentials: true,
+    allowedHeaders: [
+      "token",
+      "Origin",
+      "Accept",
+      "Content-Type",
+      "Authorization",
+      "X-Requested-With",
+      "device-remember-token",
+      "Access-Control-Allow-Origin",
+    ],
   })
 );
 

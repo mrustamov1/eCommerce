@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Images } from "../../assets/image";
 import { useNavigate } from "react-router-dom";
 import { Button } from "../../ui-components/button/button.component";
-import { useAuthorization } from "../../context/authorization.context";
+// import { useAuthorization } from "../../context/authorization.context";
 
 export function Header() {
   // ---------------------------------------------------------------------------
@@ -10,7 +10,7 @@ export function Header() {
   // ---------------------------------------------------------------------------
 
   const navigate = useNavigate();
-  const { user, logout } = useAuthorization();
+  // const { user, logout } = useAuthorization();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   // ---------------------------------------------------------------------------
@@ -49,8 +49,8 @@ export function Header() {
       {/* --------------------------------------------------------------------------- */}
       {/* CHECK WHEaTHER USER EXIST OR NOT */}
       {/* --------------------------------------------------------------------------- */}
-      {user ? (
-        <div className="relative inline-block group">
+      {/* {user ? ( */}
+        {/* <div className="relative inline-block group">
           <img
             className="w-[45px] h-[45px] rounded-full cursor-pointer"
             src={Images.userProfile}
@@ -64,19 +64,19 @@ export function Header() {
             </span>
             <span
               className="flex items-center gap-2 px-4 py-2 text-gray-800 hover:bg-gray-200 rounded-lg"
-              onClick={logout}
+              // onClick={logout}
             >
               <i className="fa-light fa-arrow-right-from-bracket"></i> Log out
             </span>
           </div>
-        </div>
-      ) : (
+        </div> */}
+      {/* ) : ( */}
         <Button
           title="Sign In"
           mode="simple"
           onClick={() => navigate("/sign-in")}
         />
-      )}
+      {/* )} */}
     </header>
   );
 }

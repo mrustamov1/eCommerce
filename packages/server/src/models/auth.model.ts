@@ -1,20 +1,14 @@
-import { z } from "zod";
-// import { UserKindEnum } from "./user.type";
+import { UserKind } from "../types/user.type";
 
-export const RegistrationSchema = z.object({
-  id: z.string().optional(),
-  name: z.string().nonempty("Name is required"),
-  surname: z.string().nonempty("Surname is required"),
-  email: z.string().email().nonempty(),
-  password: z.string().min(8).nonempty(),
-  // role: UserKindEnum,
-});
+export type RegisterModel = {
+  name: string;
+  surname: string;
+  email: string;
+  password: string;
+  role: UserKind;
+};
 
-export type RegistrationModel = z.infer<typeof RegistrationSchema>;
-
-export const LoginSchema = z.object({
-  email: z.string().email().nonempty(),
-  password: z.string().min(8).nonempty(),
-});
-
-export type LoginModel = z.infer<typeof LoginSchema>;
+export type LoginModel = {
+  email: string;
+  password: string;
+};
