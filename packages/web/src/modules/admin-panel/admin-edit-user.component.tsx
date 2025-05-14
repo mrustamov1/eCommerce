@@ -1,8 +1,8 @@
 import { useState } from "react";
-import { Input } from "../../ui-components/Input/input.component";
 import { AdminType } from "../../types/admin.type";
-import { Button } from "../../ui-components/button/button.component";
 import { useModal } from "../../ui-components/modal";
+import { Input } from "../../ui-components/Input/input.component";
+import { Button } from "../../ui-components/button/button.component";
 
 type AdminEditUserProps = {
   user: AdminType;
