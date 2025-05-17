@@ -1,9 +1,9 @@
 import { useState } from "react";
-import { useQuery } from "@tanstack/react-query";
 import { AdminType } from "../../types/admin.type";
-import { Button } from "../../ui-components/button/button.component";
 import { useModal } from "../../ui-components/modal";
+import { useGetUsers } from "../../hooks/fetch.hook";
 import { AdminEditUser } from "./admin-edit-user.component";
+import { Button } from "../../ui-components/button/button.component";
 
 export function Admin() {
   // ---------------------------------------------------------------------------
@@ -17,16 +17,7 @@ export function Admin() {
   // functions
   // ---------------------------------------------------------------------------
 
-  async function getUser() {
-    const reponse = await fetch("http://localhost:9090/api/user/get");
-    const result = reponse.json();
-    return result;
-  }
-
-  const { data } = useQuery({
-    queryFn: () => getUser(),
-    queryKey: ["get-user"],
-  });
+  const { data } = useGetUsers();
 
   async function handleDelete(userId: number) {
     try {
