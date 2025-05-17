@@ -1,7 +1,8 @@
 import { useQuery } from "@tanstack/react-query";
 import {
-  fetchProducts,
+  fetchFaq,
   fetchUsers,
+  fetchProducts,
   fetchCategories,
 } from "../fetch/fetch.component";
 
@@ -23,5 +24,12 @@ export function useCategories() {
   return useQuery({
     queryKey: ["categories"],
     queryFn: () => fetchCategories(),
+  });
+}
+
+export function useFaq() {
+  return useQuery({
+    queryKey: ["faq"],
+    queryFn: () => fetchFaq(),
   });
 }

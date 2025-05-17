@@ -1,7 +1,7 @@
 import { Images } from "../../assets/image";
 import { useNavigate } from "react-router-dom";
-import { useQuery } from "@tanstack/react-query";
 import { FaqType } from "../../types/faq.type";
+import { useFaq } from "../../hooks/fetch.hook";
 import { Button } from "../../ui-components/button/button.component";
 
 export function FAQ() {
@@ -14,16 +14,7 @@ export function FAQ() {
   // functions
   // ---------------------------------------------------------------------------
 
-  async function fetchFaq() {
-    const response = await fetch("http://localhost:9090/faq/get");
-    const res = await response.json();
-    return res;
-  }
-
-  const { data } = useQuery({
-    queryFn: () => fetchFaq(),
-    queryKey: ["faq"],
-  });
+  const { data } = useFaq();
 
   // ---------------------------------------------------------------------------
   return (
