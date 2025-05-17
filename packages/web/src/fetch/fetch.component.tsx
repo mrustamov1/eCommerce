@@ -1,32 +1,39 @@
-export async function fetchProducts() {
-  const response = await fetch("http://localhost:9090/products/get");
-  const res = await response.json();
-  return res;
-}
+const BASE_URL = "http://localhost:9090";
+const error = "Failed to fetch";
 
-export async function fetchUsers() {
-  const reponse = await fetch("http://localhost:9090/api/user/get");
-  const result = reponse.json();
-  return result;
-}
+export const FetchData = {
+  async fetchProducts() {
+    const response = await fetch(`${BASE_URL}/products/get`);
+    if (!response.ok) throw new Error(error);
+    const res = await response.json();
+    return res;
+  },
 
-export async function fetchCategories() {
-  const response = await fetch("http://localhost:9090/categories/get");
-  const res = response.json();
-  return res;
-}
+  async fetchUsers() {
+    const response = await fetch(`${BASE_URL}/api/user/get`);
+    if (!response.ok) throw new Error(error);
+    const result = response.json();
+    return result;
+  },
 
-export async function fetchFaq() {
-  const response = await fetch("http://localhost:9090/faq/get");
-  const res = await response.json();
-  return res;
-}
+  async fetchCategories() {
+    const response = await fetch(`${BASE_URL}/categories/get`);
+    if (!response.ok) throw new Error(error);
+    const res = response.json();
+    return res;
+  },
 
-export async function fetchProductDetails(id: string) {
-  const response = await fetch(
-    `http://localhost:9090/product/details/get/${id}`
-  );
-  if (!response.ok) throw new Error("Failed to fetch product details");
-  const res = await response.json();
-  return res;
-}
+  async fetchFaq() {
+    const response = await fetch(`${BASE_URL}/faq/get`);
+    if (!response.ok) throw new Error(error);
+    const res = await response.json();
+    return res;
+  },
+
+  async fetchProductDetails(id: string) {
+    const response = await fetch(`${BASE_URL}/product/details/get/${id}`);
+    if (!response.ok) throw new Error(error);
+    const res = await response.json();
+    return res;
+  },
+};

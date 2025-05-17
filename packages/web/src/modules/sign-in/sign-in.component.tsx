@@ -1,11 +1,11 @@
 import { Images } from "../../assets/image";
 import { useNavigate } from "react-router-dom";
+import { UserType } from "../../types/user.type";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { Input } from "../../ui-components/Input/input.component";
 import { Button } from "../../ui-components/button/button.component";
 import { UserLoginSchema, UserLoginType } from "../../types/auth.type";
-import { UserType } from "../../types/user.type";
 
 export function SignIn() {
   // ---------------------------------------------------------------------------
