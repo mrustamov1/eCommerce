@@ -21,3 +21,12 @@ export async function fetchFaq() {
   const res = await response.json();
   return res;
 }
+
+export async function fetchProductDetails(id: string) {
+  const response = await fetch(
+    `http://localhost:9090/product/details/get/${id}`
+  );
+  if (!response.ok) throw new Error("Failed to fetch product details");
+  const res = await response.json();
+  return res;
+}
