@@ -4,8 +4,8 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { Input } from "../../ui-components/Input/input.component";
 import { Button } from "../../ui-components/button/button.component";
-import { UserRegisterSchema, UserRegisterType } from "../../types/auth.type";
 import { useAuthorization } from "../../context/authorization.context";
+import { UserRegisterSchema, UserRegisterType } from "../../types/auth.type";
 
 export function SignUp() {
   // ---------------------------------------------------------------------------
