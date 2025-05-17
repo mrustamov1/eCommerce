@@ -15,3 +15,9 @@ export async function fetchCategories() {
   const res = response.json();
   return res;
 }
+
+export async function fetchFaq() {
+  const response = await fetch("http://localhost:9090/faq/get");
+  const res = await response.json();
+  return res;
+}
