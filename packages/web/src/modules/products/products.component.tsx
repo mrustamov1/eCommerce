@@ -1,10 +1,10 @@
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 import { Header } from "../header/header.component";
 import { ProductType } from "../../types/product.type";
 import { Input } from "../../ui-components/Input/input.component";
 import { Button } from "../../ui-components/button/button.component";
-import { useState } from "react";
 
 export function Products() {
   // ---------------------------------------------------------------------------
