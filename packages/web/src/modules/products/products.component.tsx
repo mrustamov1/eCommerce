@@ -21,11 +21,9 @@ export function Products() {
   }
 
   async function fetchProducts() {
-    const response = await fetch("http://localhost:9090/products/get").then(() => console.log("error")).catch(
-      () => console.log("Not found"))
-
-    // const res = await response.json();
-    return [];
+    const response = await fetch("http://localhost:9090/products/get");
+    const res = await response.json();
+    return res;
   }
 
   const query = useQuery({
