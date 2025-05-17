@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
-import { useQuery } from "@tanstack/react-query";
 import video from "../../assets/videos/video.mp4";
+import { useProducts } from "../../hooks/fetch.hook";
 import { ProductType } from "../../types/product.type";
 import { Button } from "../../ui-components/button/button.component";
 
@@ -18,24 +18,14 @@ export function PopularProducts() {
     navigate(`/products/${id.toString()}`);
   }
 
-  async function fetchProducts() {
-    const response = await fetch("http://localhost:9090/products/get");
-    const res = await response.json();
-    return res;
-  }
-
-  const query = useQuery({
-    queryFn: () => fetchProducts(),
-    queryKey: ["products"],
-  });
-
+  const { data } = useProducts();
   // ---------------------------------------------------------------------------
   return (
     <section className="flex flex-col justify-center items-center py-[4.5rem]">
       <h1 className="text-[2.5rem] font-bold">Popular Now</h1>
       <div className="w-full max-w-[1200px] mx-auto pt-16 max-md:max-w-full p-4">
         <div className="flex gap-5 overflow-x-auto md:overflow-x-visible scroll-smooth scrollbar-hidden pb-10">
-          {query.data?.slice(0, 3).map((product: ProductType) => (
+          {data?.slice(0, 3).map((product: ProductType) => (
             <article
               onClick={() => handleID(product.id)}
               key={product.id}
