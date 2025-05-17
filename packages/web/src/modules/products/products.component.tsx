@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { useQuery } from "@tanstack/react-query";
 import { Header } from "../header/header.component";
+import { useProducts } from "../../hooks/fetch.hook";
 import { ProductType } from "../../types/product.type";
 import { Input } from "../../ui-components/Input/input.component";
 import { Button } from "../../ui-components/button/button.component";
@@ -20,16 +20,7 @@ export function Products() {
     navigate(`/products/${id.toString()}`);
   }
 
-  async function fetchProducts() {
-    const response = await fetch("http://localhost:9090/products/get")
-    const res = await response.json();
-    return res;
-  }
-
-  const query = useQuery({
-    queryFn: () => fetchProducts(),
-    queryKey: ["products"],
-  });
+  const { data } = useProducts();
 
   function toggleSearch() {
     setSearch((prev) => !prev);
@@ -64,7 +55,7 @@ export function Products() {
         {/* DATA MAP */}
         {/* --------------------------------------------------------------------------- */}
         <div className="grid grid-cols-4 gap-5 perspective-[1000px] pt-12 max-xl:grid max-xl:grid-cols-3 max-lg:grid max-lg:grid-cols-2 max-sm:grid max-sm:grid-cols-1">
-          {query.data?.map((product: ProductType) => (
+          {data?.map((product: ProductType) => (
             <article
               onClick={() => handleID(product.id)}
               key={product.id}
