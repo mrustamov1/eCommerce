@@ -47,7 +47,7 @@ export const AuthorizationController = {
   async login(req: Request<unknown, unknown, LoginModel>, res: Response) {
     try {
       const user = await DataSourceUtils.findOne(UserEntity, {
-        where: { email: req.body.email.trim() },
+        where: { email: req.body.email },
       });
 
       const isValid =

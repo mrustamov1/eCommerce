@@ -4,9 +4,6 @@ import { UserKind } from "../types/user.type";
 
 export const TokenUtils = {
   generate(id: string, role: UserKind): { access: string; refresh: string } {
-    console.log("token-utils:generate");
-    console.log("Generating access token");
-
     const accessToken = jwt.sign(
       { id: id, role: role },
       process.env.JWT_ACCESS_SECRET as string,

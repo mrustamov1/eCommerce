@@ -38,9 +38,9 @@ export const AuthorizationProvider: React.FC<AuthorizationProviderProps> = ({
   }, []);
 
   const checkAuth = useCallback(() => {
-    const currentUser = localStorage.getItem("currentUser");
+    const currentUser = localStorage.getItem("currentUserId");
     if (currentUser) {
-      setUser(JSON.parse(currentUser));
+      setUser({id: currentUser});
     }
   }, []);
 
