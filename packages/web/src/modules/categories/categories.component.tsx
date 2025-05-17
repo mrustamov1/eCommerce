@@ -1,4 +1,4 @@
-import { useQuery } from "@tanstack/react-query";
+import { useCategories } from "../../hooks/fetch.hook";
 import { CategoriesType } from "../../types/categories.type";
 
 export function Categories() {
@@ -6,16 +6,7 @@ export function Categories() {
   // functions
   // ---------------------------------------------------------------------------
 
-  async function fetchCategories() {
-    const response = await fetch("http://localhost:9090/categories/get");
-    const res = response.json();
-    return res;
-  }
-
-  const { data } = useQuery({
-    queryFn: () => fetchCategories(),
-    queryKey: ["categories"],
-  });
+  const { data } = useCategories();
 
   // ---------------------------------------------------------------------------
   return (
