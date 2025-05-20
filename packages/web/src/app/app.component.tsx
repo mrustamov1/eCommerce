@@ -10,7 +10,7 @@ export function App() {
     <AuthorizationProvider>
       <ModalProvider>
         <QueryClientProvider client={querClient}>
-          {/* <MainRoutes /> */}
+          <MainRoutes />
         </QueryClientProvider>
       </ModalProvider>
     </AuthorizationProvider>
