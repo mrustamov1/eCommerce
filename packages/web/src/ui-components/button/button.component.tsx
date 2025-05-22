@@ -1,6 +1,6 @@
-import clsx from "clsx"
-import { PropsWithChildren } from "react"
-import { memoComponent } from "../../memo-component/memo-component.component"
+import clsx from "clsx";
+import { PropsWithChildren } from "react";
+import { memoComponent } from "../../memo-component/memo-component.component";
 
 export const Button = memoComponent(
   "Button",
