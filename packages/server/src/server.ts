@@ -69,6 +69,7 @@ server.get("/faq/get", FaqController.get);
 // ---------------------------------------------------------------------------
 // Server
 // ---------------------------------------------------------------------------
+
 await AppDataSource.initialize();
 server.listen({ host: "0.0.0.0", port: Config.port });
 console.log(`Server running on localhost://0.0.0.0:${Config.port}}`);
