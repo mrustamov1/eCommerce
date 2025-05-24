@@ -1,9 +1,7 @@
 import { z } from "zod";
 
-export enum UserKind {
-  user = "user",
-  admin = "admin",
-}
+export const UserKindSchema = z.enum(["user", "admin"]);
+export type UserKind = z.infer<typeof UserKindSchema>;
 
 export const UserSchema = z.object({
   id: z.string(),
@@ -13,7 +11,7 @@ export const UserSchema = z.object({
   name: z.string(),
   email: z.string(),
   password: z.string(),
-  // role: z.enum([UserKind]),
+  role: UserKindSchema,
   refreshToken: z.string(),
 });
 
