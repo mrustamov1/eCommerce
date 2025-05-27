@@ -36,7 +36,7 @@ export function AdminEditUser({ user }: AdminEditUserProps) {
         return false;
       }
 
-      await response.json();
+      await response.json()
       modal.close();
       return true;
     } catch (error) {
